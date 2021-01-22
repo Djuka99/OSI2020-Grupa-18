@@ -1,0 +1,7 @@
+﻿  AdminApp.c
+C:\Users\djuki\Documents\OSI\OSI_projekat\OSI_projekat\OSI_projekat\AdminAppFunctions.h(7,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+C:\Users\djuki\Documents\OSI\OSI_projekat\OSI_projekat\OSI_projekat\AdminApp.c : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+C:\Users\djuki\Documents\OSI\OSI_projekat\OSI_projekat\OSI_projekat\AdminAppFunctions.h(63,24): warning C4129: 'D': unrecognized character escape sequence
+C:\Users\djuki\Documents\OSI\OSI_projekat\OSI_projekat\OSI_projekat\AdminAppFunctions.h(63,24): warning C4129: 'A': unrecognized character escape sequence
+C:\Users\djuki\Documents\OSI\OSI_projekat\OSI_projekat\OSI_projekat\AdminAppFunctions.h(111): warning C4715: 'Admin_SignIn': not all control paths return a value
+  OSI_projekat.vcxproj -> C:\Users\djuki\Documents\OSI\OSI_projekat\OSI_projekat\Debug\AdminApp.exe
