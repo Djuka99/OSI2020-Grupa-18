@@ -59,16 +59,18 @@ int Enter_Admin_Data() {
 
 	}
 
+	
 
-	if ((Datoteke = fopen("C..\Datoteke\Administrator.txt", "r")) != NULL) {
-		while (fscanf(Datoteke, "%s %s", user_name_temp, password_temp) != EOF)
+
+	if ((Datoteke = fopen("Datoteke/Administrator.txt", "r")) != NULL) {
+		while (fscanf(Datoteke, "%s %s\n", user_name_temp, password_temp) != EOF)
 			if (strcmp(user_name_temp, admin.user_name) == 0 && strcmp(password_temp, admin.password) == 0)
 				return 1;
 		fclose(Datoteke);
 
 	}
 	else
-		printf("EROR: Failed to open Admin_log file!\n");
+		printf("\nEROR: Failed to open Admin_log file!\n");
 	
 
 	return 0;
