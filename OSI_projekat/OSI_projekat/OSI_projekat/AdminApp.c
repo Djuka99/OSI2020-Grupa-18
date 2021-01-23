@@ -1,14 +1,14 @@
-#pragma once
 #define _CRT_SECURE_NO_WARNINGS
-#include<Windows.h>
-#include "AdminAppFunctions.h"
-#include "AdminAppMenu.h"
-
-
+#include<stdio.h>
+#include<stdlib.h>
+#include"Funkcija.h"
+#include"Meni.h"
 
 int main() {
 
-	Admin_SignIn_Menu();
+	meniZaLogovanje();
+	glavniMeni();
+	odabirOpcije();
 
 
 	return 0;
