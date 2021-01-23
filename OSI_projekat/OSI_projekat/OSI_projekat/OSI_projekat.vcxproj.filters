@@ -20,10 +20,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AdminAppFunctions.h">
+    <ClInclude Include="Meni.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AdminAppMenu.h">
+    <ClInclude Include="Funkcija.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

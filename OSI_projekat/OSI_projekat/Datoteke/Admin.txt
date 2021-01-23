@@ -1,3 +1,0 @@
-admin admin
-a a
-v v

@@ -143,8 +143,8 @@
     <ClCompile Include="AdminApp.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AdminAppFunctions.h" />
-    <ClInclude Include="AdminAppMenu.h" />
+    <ClInclude Include="Funkcija.h" />
+    <ClInclude Include="Meni.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
