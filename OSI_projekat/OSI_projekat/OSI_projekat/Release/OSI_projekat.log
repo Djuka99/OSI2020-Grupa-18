@@ -1,7 +1,0 @@
-﻿  AdminApp.c
-  Generating code
-  Previous IPDB not found, fall back to full compilation.
-C:\Users\djuki\Desktop\GIT_OSI\OSI_projekat\OSI_projekat\OSI_projekat\AdminAppFunctions.h(111): warning C4715: 'Admin_SignIn': not all control paths return a value
-  All 11 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Finished generating code
-  OSI_projekat.vcxproj -> C:\Users\djuki\Desktop\GIT_OSI\OSI_projekat\OSI_projekat\Release\AdminApp.exe

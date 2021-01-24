@@ -1,8 +1,4 @@
 1 treci treci 1
-2 osmi osmi 0
-3 bojan bojan 0
-4 vojin vojin 1
-5 loja loja 1
-7 vrlja 123 1 
-8 djuka 123 1
-9 miladin miladin 1 
+2 vojin vojin 1
+3 loja loja 0
+
