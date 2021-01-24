@@ -1,7 +1,7 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS
-#define MAX 20
-#define MAXF 1000
+#define MAX 30
+#define MAXF 5000
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -16,6 +16,18 @@ typedef struct HR {
 	char userName[MAX], password[MAX];
 	int id, stanje;
 }HR;
+
+typedef struct datum {
+	int dan, mjesec, godina;
+}DATUM;
+
+typedef struct korisnik {
+	char userName[MAX], password[MAX], ime[MAX], prezime[MAX], radnoMjesto[MAX], sektor[MAX];
+	int id, stanje;
+	DATUM datum;
+}KORISNIK;
+
+
 
 int unosPodataka();
 int logovanje();
@@ -82,16 +94,16 @@ int logovanje() {
 		printf("Nalog je blokiran sat vremena!");
 		do {
 			printf("Pritisni E za izlazak iz aplikacije!");
-			scanf("%s", c[0]);
-		} while (c[0] != 'e' && c[0] != 'E');
+			scanf("%s", c);
+		} while (c != 'e' && c != 'E');
 	}
 }
 
 
 
-int brojacNaloga() {
+int brojacNaloga() {																									     // Funkcija koja broji naloge                                                                                             
 	FILE* hr;
-	int brojac = 0;
+	int brojac = 1;
 	char c;
 	if ((hr = fopen("../Datoteke/HR.txt", "r")) != NULL) {
 		for (c = getc(hr); c != EOF; c = getc(hr))
@@ -109,17 +121,28 @@ int brojacNaloga() {
 
 int kreiranjeHR() {
 	FILE* hr;
-	HR hrAccount;
-	char temp;
+	HR hrAccount, temp;
 	int b = brojacNaloga();
-	int stanjeRadnika = 1;                           //Za aktivne radnike 1, neaktivne 0
-
+	int stanjeRadnika = 1;															                                         // Promjenljiva koja reprezentuje stanje radnika:
+																															 // 1 za aktivan nalog i 0 za neaktivan
 	for (int i = 0; i < MAX; i++)
 		hrAccount.password[i] = 0;
 
-	printf("Unesi ime novog clana: "); scanf("%s", hrAccount.userName);
-	printf("Unesi lozinku novog clana: "); scanf("%s", hrAccount.password);
+	do {
 
+		printf("Unesi ime: "); scanf("%s", hrAccount.userName);
+		printf("Unesi sifru: "); scanf("%s", hrAccount.password);
+
+		if ((hr = fopen("../Datoteke/HR.txt", "r")) != NULL)
+			while (fscanf(hr, "%d %s %s %d", &temp.id, temp.userName, temp.password, &temp.stanje) != EOF) {
+				if (strcmp(hrAccount.userName, temp.userName) != 0) {
+					continue;
+				}
+				else printf("Vec postoji nalog sa tim imenom!\n");
+				break;
+			}
+
+	} while (fscanf(hr, "%d %s %s %d", &temp.id, temp.userName, temp.password, &temp.stanje) != EOF);
 	if ((hr = fopen("../Datoteke/HR.txt", "a")) != NULL)
 		fprintf(hr, "%d %s %s %d \n", b + 1, hrAccount.userName, hrAccount.password, stanjeRadnika);
 	else
@@ -127,23 +150,24 @@ int kreiranjeHR() {
 	fclose(hr);
 
 }
-int zamjena(char* fname, int brLinije, char* novaLinija)
+
+
+int zamjena(char* fname, int brLinije, char* novaLinija)							                                         // Funkcija koja ce mijenjati stanje radnika
 {
 	FILE* fptr1, * fptr2;
 	int  linectr = 0;
 	char str[MAX];
 	char temp[] = "temp.txt";
-
 	fptr1 = fopen(fname, "r");
 	if (!fptr1)
 	{
-		printf("Unable to open the input file!!\n");
+		printf("Nije moguce otvaranje datoteke za citanje!!\n");
 		return 0;
 	}
 	fptr2 = fopen(temp, "w");
 	if (!fptr2)
 	{
-		printf("Unable to open a temporary file to write!!\n");
+		printf("Nije moguce otvaranje datoteke za pisanje!!\n");
 		fclose(fptr1);
 		return 0;
 	}
@@ -169,7 +193,7 @@ int zamjena(char* fname, int brLinije, char* novaLinija)
 	fclose(fptr2);
 	remove(fname);
 	rename(temp, fname);
-	printf("\n\n\n\n\nNalog je deaktiviran! \n");
+	printf(" Nalog radnika je deaktiviran ! \n");
 	return 0;
 }
 
@@ -179,8 +203,7 @@ int deaktiviranjeHR() {
 	char temp_u[MAX], idChar[MAX], stanjeChar[MAX], linija[MAXF] = "";
 	char opcija;
 	int brLinija = 0;
-	printf("Unesi ime radnika kome zelis promjeniti stanje naloga!\n");
-	printf("Ime radnika: ");
+	printf("Unesi username HR korisnika kome zelis promjeniti stanje naloga!\n");
 	scanf("%s", temp_u);
 	if ((hr = fopen("../Datoteke/HR.txt", "r")) != NULL)
 		while (fscanf(hr, "%d %s %s %d", &hrAccount.id, hrAccount.userName, hrAccount.password, &hrAccount.stanje) != EOF)
@@ -188,7 +211,7 @@ int deaktiviranjeHR() {
 			brLinija++;
 			if (strcmp(hrAccount.userName, temp_u) == 0)
 			{
-				hrAccount.stanje = 0;
+				hrAccount.stanje = 0;																						 // Konverujem int u string i spajam sve u jedan string 
 				_itoa(hrAccount.id, idChar, 10);
 				_itoa(hrAccount.stanje, stanjeChar, 10);
 				strcat(linija, idChar);
@@ -199,20 +222,69 @@ int deaktiviranjeHR() {
 				strcat(linija, " ");
 				strcat(linija, stanjeChar);
 				strcat(linija, "\n");
-				printf("Nalog ovog radnika je ");
-				if (hrAccount.stanje == 0)
-					printf("aktivan!\n");
-				else
-					printf("neaktivan!\n");
+
 				break;
 			}
 		}
 	fclose(hr);
-	zamjena("../Datoteke/HR.txt", brLinija, linija);
-	printf("Ukoliko zelite da deaktivirate nalog pritisnite Y!\n");
+	if (hrAccount.stanje == 0)
+		zamjena("../Datoteke/HR.txt", brLinija, linija);
+	else
+		printf("Nalog radnika je vec neaktivan!");
 	opcija = _getch();
 
+}
 
-
+int deaktiviranjeKR() {
+	FILE* kr, * kr_temp;
+	KORISNIK krAccount;
+	char temp_u[MAX], idChar[MAX], stanjeChar[MAX], danChar[MAX], mjesecChar[MAX], godinaChar[MAX], linija[MAXF] = "";
+	char opcija;
+	int brLinija = 0;
+	printf("Unesi ime radnika kome zelis promjeniti stanje naloga!\n");
+	scanf("%s", temp_u);
+	if ((kr = fopen("../Datoteke/Korisnici.txt", "r")) != NULL)
+		while (fscanf(kr, "%d %s %s %s %s %s %s %d %d %d %d", &krAccount.id, krAccount.userName, krAccount.password, krAccount.ime, krAccount.prezime, krAccount.radnoMjesto, krAccount.sektor, &krAccount.datum.dan, &krAccount.datum.mjesec, &krAccount.datum.godina, &krAccount.stanje) != EOF)
+		{
+			brLinija++;
+			if (strcmp(krAccount.ime, temp_u) == 0)
+			{
+				krAccount.stanje = 0;																						 // Konverujem int u string i spajam sve u jedan string 
+				_itoa(krAccount.id, idChar, 10);
+				_itoa(krAccount.stanje, stanjeChar, 10);
+				_itoa(krAccount.datum.dan, danChar, 10);
+				_itoa(krAccount.datum.mjesec, mjesecChar, 10);
+				_itoa(krAccount.datum.godina, godinaChar, 10);
+				strcat(linija, idChar);
+				strcat(linija, " ");
+				strcat(linija, krAccount.userName);
+				strcat(linija, " ");
+				strcat(linija, krAccount.password);
+				strcat(linija, " ");
+				strcat(linija, krAccount.ime);
+				strcat(linija, " ");
+				strcat(linija, krAccount.prezime);
+				strcat(linija, " ");
+				strcat(linija, krAccount.radnoMjesto);
+				strcat(linija, " ");
+				strcat(linija, krAccount.sektor);
+				strcat(linija, " ");
+				strcat(linija, danChar);
+				strcat(linija, " ");
+				strcat(linija, mjesecChar);
+				strcat(linija, " ");
+				strcat(linija, godinaChar);
+				strcat(linija, " ");
+				strcat(linija, stanjeChar);
+				strcat(linija, "\n");
+				break;
+			}
+		}
+	fclose(kr);
+	if (krAccount.stanje == 0)
+		zamjena("../Datoteke/Korisnici.txt", brLinija, linija);
+	else
+		printf("Nalog radnika je vec neaktivan!");
+	opcija = _getch();
 
 }

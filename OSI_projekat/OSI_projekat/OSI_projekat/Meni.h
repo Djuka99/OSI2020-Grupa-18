@@ -48,6 +48,7 @@ void meniZaDeaktiviranjeKN() {
 	printf("\t\tDEAKTIVIRANJE KORISNICKOG NALOGA\n");
 	printf("----------------------------------------------------------------\n");
 	printf("Unesi M za povratak na glavni meni ili E za izlazak iz programa!\n");
+	deaktiviranjeKR();
 }
 
 void odabirOpcije() {
