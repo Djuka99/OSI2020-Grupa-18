@@ -27,6 +27,13 @@ typedef struct korisnik {
 	DATUM datum;
 }KORISNIK;
 
+typedef struct informacija {
+	char ime[MAX], email[MAX], broj[MAX];
+}INFO;
+
+
+int citanjeInformacije();
+int izmjenaInformacija();
 char* citanjeFlaga();
 void upisFlaga(char* flag);
 int unosKoda();
@@ -36,6 +43,8 @@ int kreiranjeHR();
 int deaktiviranjeHR();
 int deaktiviranjeKR();
 int provjeraPostojanja();
+int informacije();
+
 
 
 int unosPodataka() {
@@ -362,6 +371,60 @@ int unosKoda() {
 			printf("Nije moguce otvoriti datoteku za citanje kljuca!\n");
 	} while (opcija2 != 1);
 	fclose(aktivacija);
+}
 
+int izmjenaInformacija() {
+	INFO info;
+	char opcija;
+	FILE* informacije;
+	if (strcmp(citanjeFlaga(), "zakljucano") == 0) {
+		printf("Ova opcija je dostupna samo za korisnike sa otkljucanom aplikacijom!\n\n");
+		printf("Izaberite opciju\n1-> Povratak na glavni meni\n2-> Izlazak iz aplikacije\n");
+		opcija = _getch();
+		while (opcija != '1' && opcija != '2') {
+			printf("Pogresan unos!\n");
+			opcija = _getch();
+		}
+
+		if (opcija == '1')
+			glavniMeni();
+		else if (opcija == '2')
+			exit(1);
+	}
+	else {
+		printf("Unesi ime kompanije: "); scanf("%s", info.ime);
+		printf("Unesi email kompanije: "); scanf("%s", info.email);
+		printf("Unesi broj kompanije: "); scanf("%s", info.broj);
+
+		if ((informacije = fopen("../../Datoteke/Informacije.txt", "w")) != NULL)
+			fprintf(informacije, "%s %s %s", info.ime, info.email, info.broj);
+		else
+			printf("Nije moguce otvoriti Informacije.txt za upis!\n");
+		fclose(informacije);
+		printf("Izaberite opciju\n1-> Povratak na glavni meni\n2-> Izlazak iz aplikacije\n");
+		opcija = _getch();
+		while (opcija != '1' && opcija != '2') {
+			printf("Pogresan unos!\n");
+			opcija = _getch();
+		}
+
+		if (opcija == '1')
+			glavniMeni();
+		else if (opcija == '2')
+			exit(1);
+
+	}
+}
+
+int citanjeInformacije() {
+	FILE* informacije;
+	INFO info;
+
+	if ((informacije = fopen("../../Datoteke/Informacije.txt", "r")) != NULL)
+		fscanf(informacije, "%s %s %s", info.ime, info.email, info.broj);
+	else printf("Nije moguce otvoriti Informacije.txt!\n");
+	fclose(informacije);
+	printf("%s\n%s\n%s\n", info.ime, info.email, info.broj);
 
 }
+

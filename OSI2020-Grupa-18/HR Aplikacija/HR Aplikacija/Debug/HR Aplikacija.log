@@ -1,0 +1,10 @@
+﻿  HR main.c
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\HR Aplikacija\HR Aplikacija\HR funkcije.h(134,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'FILE *'
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\HR Aplikacija\HR Aplikacija\HR funkcije.h(159,7): warning C4101: 'str': unreferenced local variable
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\HR Aplikacija\HR Aplikacija\HR funkcije.h(181,7): warning C4101: 'str': unreferenced local variable
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\HR Aplikacija\HR Aplikacija\HR funkcije.h(88): warning C4715: 'logovanje': not all control paths return a value
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\HR Aplikacija\HR Aplikacija\HR funkcije.h(154): warning C4716: 'dodavanjeNovog': must return a value
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\HR Aplikacija\HR Aplikacija\HR funkcije.h(198): warning C4716: 'pretragaSektora': must return a value
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\HR Aplikacija\HR Aplikacija\HR funkcije.h(175): warning C4716: 'pretragaRadnogMjesta': must return a value
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\HR Aplikacija\HR Aplikacija\HR funkcije.h(214): warning C4716: 'pretragaPoBazi': must return a value
+  HR Aplikacija.vcxproj -> C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Debug\HR Aplikacija.exe

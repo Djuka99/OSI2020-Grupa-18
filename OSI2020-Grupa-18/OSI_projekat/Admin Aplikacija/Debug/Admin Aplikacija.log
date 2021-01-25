@@ -1,0 +1,12 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Zadnji put.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Admin_main.c
+C:\Users\djuki\Desktop\OSI\Zadnji put\Zadnji put\Admin_funkcije.h(212,14): warning C4101: 'hr_temp': unreferenced local variable
+C:\Users\djuki\Desktop\OSI\Zadnji put\Zadnji put\Admin_funkcije.h(250,14): warning C4101: 'kr_temp': unreferenced local variable
+C:\Users\djuki\Desktop\OSI\Zadnji put\Zadnji put\Admin_funkcije.h(308,33): warning C4020: 'fputc': too many actual parameters
+C:\Users\djuki\Desktop\OSI\Zadnji put\Zadnji put\Admin_funkcije.h(319,17): warning C4087: '_getch': declared with 'void' parameter list
+C:\Users\djuki\Desktop\OSI\Zadnji put\Zadnji put\Admin_funkcije.h(104): warning C4715: 'logovanje': not all control paths return a value
+C:\Users\djuki\Desktop\OSI\Zadnji put\Zadnji put\Admin_funkcije.h(156): warning C4716: 'kreiranjeHR': must return a value
+C:\Users\djuki\Desktop\OSI\Zadnji put\Zadnji put\Admin_funkcije.h(247): warning C4716: 'deaktiviranjeHR': must return a value
+C:\Users\djuki\Desktop\OSI\Zadnji put\Zadnji put\Admin_funkcije.h(303): warning C4716: 'deaktiviranjeKR': must return a value
+C:\Users\djuki\Desktop\OSI\Zadnji put\Zadnji put\Admin_funkcije.h(364): warning C4715: 'unosKoda': not all control paths return a value
+  Zadnji put.vcxproj -> C:\Users\djuki\Desktop\OSI\Zadnji put\Debug\Admin Aplikacija.exe

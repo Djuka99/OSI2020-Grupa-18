@@ -43,9 +43,13 @@ void pregledPrijavaRadnika() {
 void pretragaBaze() {
 	printf("----------------------------------------------------------------\n");
 	printf("\t\t\tPRETRAGA BAZE\n");
-	printf("----------------------------------------------------------------\n");
-	//pretragaPoBazi();
+	printf("----------------------------------------------------------------\n\n");
+	printf("Izaberi opciju:\n");
+	printf("1: Prikaz radnika po radnom mjestu\n");
+	printf("2: Prikaz radnika po sektoru\n");
+	pretragaPoBazi();
 }
+
 
 void odabirOpcije() {
 	char opcija;
@@ -87,8 +91,6 @@ void odabirOpcije() {
 				exit(1);
 			break;
 		case '3':
-			system("cls");
-			pretragaBaze();
 			system("cls");
 			pretragaBaze();
 			opcija = _getch();

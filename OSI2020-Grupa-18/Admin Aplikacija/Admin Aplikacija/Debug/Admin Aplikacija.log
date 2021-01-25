@@ -1,12 +1,8 @@
 ﻿  Admin main.c
-C:\Users\djuki\Desktop\OSI2020_Grupa18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(213,14): warning C4101: 'hr_temp': unreferenced local variable
-C:\Users\djuki\Desktop\OSI2020_Grupa18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(251,14): warning C4101: 'kr_temp': unreferenced local variable
-C:\Users\djuki\Desktop\OSI2020_Grupa18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(333,38): warning C4101: 'flag': unreferenced local variable
-C:\Users\djuki\Desktop\OSI2020_Grupa18\Admin Aplikacija\Admin Aplikacija\Admin meni.h(160,53): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-C:\Users\djuki\Desktop\OSI2020_Grupa18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(105): warning C4715: 'logovanje': not all control paths return a value
-C:\Users\djuki\Desktop\OSI2020_Grupa18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(157): warning C4716: 'kreiranjeHR': must return a value
-C:\Users\djuki\Desktop\OSI2020_Grupa18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(248): warning C4716: 'deaktiviranjeHR': must return a value
-C:\Users\djuki\Desktop\OSI2020_Grupa18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(304): warning C4716: 'deaktiviranjeKR': must return a value
-C:\Users\djuki\Desktop\OSI2020_Grupa18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(327): warning C4172: returning address of local variable or temporary: flag_temp
-C:\Users\djuki\Desktop\OSI2020_Grupa18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(367): warning C4715: 'unosKoda': not all control paths return a value
-  Admin Aplikacija.vcxproj -> C:\Users\djuki\Desktop\OSI2020_Grupa18\Admin Aplikacija\Debug\Admin Aplikacija.exe
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(222,14): warning C4101: 'hr_temp': unreferenced local variable
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(260,14): warning C4101: 'kr_temp': unreferenced local variable
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(342,38): warning C4101: 'flag': unreferenced local variable
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(390,14): warning C4013: 'glavniMeni' undefined; assuming extern returning int
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin meni.h(10,6): error C2371: 'glavniMeni': redefinition; different basic types
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin meni.h(205,53): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin meni.h(214,54): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence

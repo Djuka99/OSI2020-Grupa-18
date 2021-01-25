@@ -58,22 +58,22 @@ int unosPodataka() {
 }
 
 int logovanje() {
-	char c[5];
+	char c;
 	int brPokusaja = 5;
 
 	while (brPokusaja && !unosPodataka()) {
 		--brPokusaja;
-		printf("Pogresan unos podataka! Pokusaj ponovo (T) ili izadji iz aplikacije (E)!\n");
-		scanf("%c", &c);
+		printf("\nPogresan unos podataka! Pokusaj ponovo (T) ili izadji iz aplikacije (E)!\n");
+		c = _getch();
 
-		while (c[1] != 0 || (c[0] != 'p' && c[0] != 'P' && c[0] != 'e' && c[0] != 'E'))
+		while (c != 't' && c != 'T' && c != 'e' && c != 'E')
 		{
 			printf("Nepostojeca opcija!\nUnesite 'e' ili 'p': ");
-			scanf("\n%s", &c);
+			c = _getch();
 		}
-		if (c[0] == 'e' || c[0] == 'E')
+		if (c == 'e' || c == 'E')
 			exit(1);
-		else if (c[0] == 't' || c[0] == 'T') {
+		else if (c == 't' || c == 'T') {
 			printf("Ostalo je jos %d pokusaja!", brPokusaja);
 			continue;
 		}
@@ -82,7 +82,7 @@ int logovanje() {
 		printf("Nalog je blokiran sat vremena!");
 		do {
 			printf("Pritisni E za izlazak iz aplikacije!");
-			scanf("%s", c);
+			c = _getch();
 		} while (c != 'e' && c != 'E');
 	}
 }
@@ -125,11 +125,13 @@ int dodavanjeNovog() {
 		if ((korisnici = fopen("../../Datoteke/Korisnici.txt", "r")) != NULL)
 			while (fscanf(korisnici, "%d %s %s %d %s %s %s %s %d %d %d %d", &temp.id, temp.userName, temp.password, &temp.pin, temp.ime, temp.prezime, temp.radnoMjesto, temp.sektor, &temp.datum.dan, &temp.datum.mjesec, &temp.datum.godina, &temp.stanje) != EOF) {
 				if ((strcmp(krAccount.userName, temp.userName) == 0)) {
+					printf("%s\n", temp.ime);
 					printf("Vec postoji nalog sa tim imenom!\n");
 					break;
 				}
 			}
 	} while (fscanf(korisnici, "%d %s %s %d %s %s %s %s %d %d %d %d", &temp.id, temp.userName, temp.password, &temp.pin, temp.ime, temp.prezime, temp.radnoMjesto, temp.sektor, &temp.datum.dan, &temp.datum.mjesec, &temp.datum.godina, &temp.stanje) != EOF);
+	printf("%d", korisnici);
 	fclose(korisnici);
 	do {
 
@@ -149,5 +151,64 @@ int dodavanjeNovog() {
 	else
 		printf("Nije moguce otvoriti HR datoteku!\n");
 	fclose(korisnici);
+}
+
+int pretragaRadnogMjesta() {
+	FILE* krAccount;
+	KORISNIK korisnik, temp;
+	char str[MAX];
+	int i = 0;
+	printf("Unesi ime radnog mjesta: "); scanf("%s", korisnik.radnoMjesto);
+
+	if ((krAccount = fopen("../../Datoteke/Korisnici.txt", "r")) != NULL) {
+		while (fscanf(krAccount, "%d %s %s %d %s %s %s %s %d %d %d %d", &temp.id, temp.userName, temp.password, &temp.pin, temp.ime, temp.prezime, temp.radnoMjesto, temp.sektor, &temp.datum.dan, &temp.datum.mjesec, &temp.datum.godina, &temp.stanje) != EOF)
+			if (strcmp(temp.radnoMjesto, korisnik.radnoMjesto) == 0)
+			{
+				printf("%d %-10s %-10s %-8s\n", i + 1, temp.ime, temp.prezime, temp.userName);
+				i++;
+			}
+		if (i == 0)
+			printf("U bazi nema nikoga na tom radnom mjestu!\n");
+	}
+	else printf("Ne moze otvoriti Korisnici.txt za pretragu radnog mjesta!\n");
+	fclose(krAccount);
+}
+
+
+int pretragaSektora() {
+	FILE* krAccount;
+	KORISNIK korisnik, temp;
+	char str[MAX];
+	int i = 0;
+	printf("Unesi ime sektora: "); scanf("%s", korisnik.sektor);
+
+	if ((krAccount = fopen("../../Datoteke/Korisnici.txt", "r")) != NULL) {
+		while (fscanf(krAccount, "%d %s %s %d %s %s %s %s %d %d %d %d", &temp.id, temp.userName, temp.password, &temp.pin, temp.ime, temp.prezime, temp.radnoMjesto, temp.sektor, &temp.datum.dan, &temp.datum.mjesec, &temp.datum.godina, &temp.stanje) != EOF)
+			if (strcmp(temp.sektor, korisnik.sektor) == 0)
+			{
+				printf("%d %s %s ( %s )\n", i, temp.ime, temp.prezime, temp.userName);
+				i++;
+			}
+		if (i == 0)
+			printf("U bazi nema nikoga u tom sektoru!\n");
+	}
+	else
+		printf("Ne moze otvoriti Korisnici.txt za pretragu sektora!\n");
+	fclose(krAccount);
+}
+
+int pretragaPoBazi() {
+	char c;
+	
+	c = _getch();
+	while (c != '1' && c != '2') {
+		printf("Nepostojeca opcija!\n");
+		c = _getch();
+	}
+
+	if (c == '1')
+		pretragaRadnogMjesta();
+	else
+		pretragaSektora();
 
 }
