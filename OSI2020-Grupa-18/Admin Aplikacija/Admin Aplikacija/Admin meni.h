@@ -101,12 +101,41 @@ void meniZaOtkljucavanje() {
 }
 
 void meniZaIzmjenuInformacija() {
+	char opcija;
 	printf("----------------------------------------------------------------\n");
 	citanjeInformacije();
 	printf("------------------------------------------------------------------------------------------------------------------------\n");
 	printf("\t\t\t\tIzmjena informacija\n");
 	printf("------------------------------------------------------------------------------------------------------------------------\n");
-	izmjenaInformacija();
+	if (strcmp(citanjeFlaga(), "zakljucano") == 0) {
+		printf("Ova opcija je dostupna samo za korisnike sa otkljucanom aplikacijom!\n\n");
+		printf("Izaberite opciju\n1-> Povratak na glavni meni\n2-> Izlazak iz aplikacije\n");
+		opcija = _getch();
+		while (opcija != '1' && opcija != '2') {
+			printf("Pogresan unos!\n");
+			opcija = _getch();
+		}
+
+		if (opcija == '1')
+			glavniMeni();
+		else if (opcija == '2')
+			exit(1);
+	}
+	else {
+		upisInformacija();
+		printf("Izaberite opciju\n1-> Povratak na glavni meni\n2-> Izlazak iz aplikacije\n");
+		opcija = _getch();
+		while (opcija != '1' && opcija != '2') {
+			printf("Pogresan unos!\n");
+			opcija = _getch();
+		}
+
+		if (opcija == '1')
+			glavniMeni();
+		else if (opcija == '2')
+			exit(1);
+	}
+		
 
 }
 
@@ -164,7 +193,7 @@ void odabirOpcije() {
 			break;
 		case '4':
 			system("cls");
-			meniInfo();
+			meniZaIzmjenuInformacija();
 			opcija = _getch();
 			while (opcija != 'm' && opcija != 'M' && opcija != 'e' && opcija != 'E') {
 				printf("Pogresan unos!\n");
@@ -178,7 +207,7 @@ void odabirOpcije() {
 			break;
 		case '5':
 			system("cls");
-			meniZaIzmjenuInformacija();
+			meniInfo;
 			opcija = _getch();
 			while (opcija != 'm' && opcija != 'M' && opcija != 'e' && opcija != 'E') {
 				printf("Pogresan unos!\n");
@@ -199,6 +228,7 @@ void odabirOpcije() {
 void provjeraMenia() {
 	char c;
 	if (strcmp(citanjeFlaga(), "zakljucano") == 0) {
+		restartInformacija();
 		meniZaOtkljucavanje();
 		c = _getch();
 		while (c != 'Y' && c != 'y' && c != 'N' & c != 'n') {
@@ -216,6 +246,7 @@ void provjeraMenia() {
 				if (c == 'Y' || c == 'y') {
 					system("cls");
 					meniZaLogovanje();
+					glavniMeni();
 				}
 				else
 					exit(1);
@@ -226,10 +257,13 @@ void provjeraMenia() {
 		else if (c == 'N' || c == 'n') {
 			system("cls");
 			meniZaLogovanje();
+			glavniMeni();
 		}
 	
 	}
 		else
 			meniZaLogovanje();
-
+	glavniMeni();
 }
+
+

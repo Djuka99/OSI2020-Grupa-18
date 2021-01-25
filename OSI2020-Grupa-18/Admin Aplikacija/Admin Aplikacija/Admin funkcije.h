@@ -2,10 +2,10 @@
 #define _CRT_SECURE_NO_WARNINGS
 #define MAX 20
 #define MAXF 1000
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<conio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <conio.h>
 
 
 typedef struct admin {
@@ -31,9 +31,8 @@ typedef struct informacija {
 	char ime[MAX], email[MAX], broj[MAX];
 }INFO;
 
-
+void upisInformacija();
 int citanjeInformacije();
-int izmjenaInformacija();
 char* citanjeFlaga();
 void upisFlaga(char* flag);
 int unosKoda();
@@ -44,7 +43,7 @@ int deaktiviranjeHR();
 int deaktiviranjeKR();
 int provjeraPostojanja();
 int informacije();
-
+void restartInformacija();
 
 
 int unosPodataka() {
@@ -373,49 +372,6 @@ int unosKoda() {
 	fclose(aktivacija);
 }
 
-int izmjenaInformacija() {
-	INFO info;
-	char opcija;
-	FILE* informacije;
-	if (strcmp(citanjeFlaga(), "zakljucano") == 0) {
-		printf("Ova opcija je dostupna samo za korisnike sa otkljucanom aplikacijom!\n\n");
-		printf("Izaberite opciju\n1-> Povratak na glavni meni\n2-> Izlazak iz aplikacije\n");
-		opcija = _getch();
-		while (opcija != '1' && opcija != '2') {
-			printf("Pogresan unos!\n");
-			opcija = _getch();
-		}
-
-		if (opcija == '1')
-			glavniMeni();
-		else if (opcija == '2')
-			exit(1);
-	}
-	else {
-		printf("Unesi ime kompanije: "); scanf("%s", info.ime);
-		printf("Unesi email kompanije: "); scanf("%s", info.email);
-		printf("Unesi broj kompanije: "); scanf("%s", info.broj);
-
-		if ((informacije = fopen("../../Datoteke/Informacije.txt", "w")) != NULL)
-			fprintf(informacije, "%s %s %s", info.ime, info.email, info.broj);
-		else
-			printf("Nije moguce otvoriti Informacije.txt za upis!\n");
-		fclose(informacije);
-		printf("Izaberite opciju\n1-> Povratak na glavni meni\n2-> Izlazak iz aplikacije\n");
-		opcija = _getch();
-		while (opcija != '1' && opcija != '2') {
-			printf("Pogresan unos!\n");
-			opcija = _getch();
-		}
-
-		if (opcija == '1')
-			glavniMeni();
-		else if (opcija == '2')
-			exit(1);
-
-	}
-}
-
 int citanjeInformacije() {
 	FILE* informacije;
 	INFO info;
@@ -427,4 +383,32 @@ int citanjeInformacije() {
 	printf("%s\n%s\n%s\n", info.ime, info.email, info.broj);
 
 }
+
+void upisInformacija() {
+	INFO info;
+	char opcija;
+	FILE* informacije;
+	printf("Unesi ime kompanije: "); scanf("%s", info.ime);
+	printf("Unesi email kompanije: "); scanf("%s", info.email);
+	printf("Unesi broj kompanije (xxx/xxx-xxx): "); scanf("%s", info.broj);
+
+	if ((informacije = fopen("../../Datoteke/Informacije.txt", "w")) != NULL)
+		fprintf(informacije, "%s %s %s", info.ime, info.email, info.broj);
+	else
+		printf("Nije moguce otvoriti Informacije.txt za upis!\n");
+	fclose(informacije);
+
+}
+
+void restartInformacija() {
+	FILE* informacije;
+	if ((informacije = fopen("../../Datoteke/Informacije.txt", "w")) != NULL)
+		fprintf(informacije, "ETF etf@unibl.net 051/221-820");
+	else
+		printf("Nije moguce otvoriti Informacije.txt za upis!\n");
+	fclose(informacije);
+
+}
+
+
 

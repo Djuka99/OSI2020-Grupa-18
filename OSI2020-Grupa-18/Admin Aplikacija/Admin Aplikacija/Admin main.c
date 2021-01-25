@@ -6,7 +6,6 @@
 
 int main() {
 	provjeraMenia();
-	glavniMeni();
 	odabirOpcije();
 
 
