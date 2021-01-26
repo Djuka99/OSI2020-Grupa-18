@@ -168,7 +168,7 @@ int kreiranjeHR() {
 int zamjena(char* fname, int brLinije, char* novaLinija)							                                         // Funkcija koja ce mijenjati stanje radnika
 {
 	FILE* fptr1, * fptr2;
-	int  linectr = 0, vrj = 0;
+	int  linectr = 0;
 	char str[MAXF];
 	char temp[] = "temp1.txt";
 	fptr1 = fopen(fname, "r");
@@ -189,8 +189,6 @@ int zamjena(char* fname, int brLinije, char* novaLinija)							                 
 	{
 		strcpy(str, "\0");
 		fgets(str, MAXF, fptr1);
-		printf("UCITO LINIJU: %s\n", str);
-		vrj++;
 
 
 
@@ -198,16 +196,16 @@ int zamjena(char* fname, int brLinije, char* novaLinija)							                 
 		if (linectr != brLinije)
 		{
 			fprintf(fptr2, "%s", str);
-			printf("stara linija\n");
+			
 		}
 		else
 		{
 			fprintf(fptr2, "%s", novaLinija);
-			printf("nova linija\n");
+			
 		}
 
 
-		printf("%d\n", vrj);
+
 	}
 	fclose(fptr1);
 	fclose(fptr2);
@@ -339,7 +337,7 @@ char* citanjeFlaga() {
 
 int unosKoda() {
 	char kod[50], temp_kod[50], opcija, flag;
-	int  opcija2 = 0;
+	int  opcija2 = 0, opcija3 = 0;
 	FILE* aktivacija;
 
 	printf("Napomena: prilikom unosa karaktera moraju biti velika slova i - (minus) izmedju. NPR: XXX-XXX-XXX\n\n\n\n");
@@ -350,7 +348,8 @@ int unosKoda() {
 			if (strcmp(kod, temp_kod) == 0) {
 				printf("Program je otkljucan!\n");
 				upisFlaga("otkljucano");
-				break;
+				opcija2 = 1;
+				opcija3 = 1;
 			}
 			else {
 				printf("Kljuc je netacan! Ponovite unos (Y) ili zatvorite aplikaciju (N)\n");
@@ -361,15 +360,18 @@ int unosKoda() {
 				}
 
 				if (opcija == 'y' || opcija == 'Y')
-					opcija2 = 1;
+					opcija2 = 0;
 				else if (opcija == 'n' || opcija == 'N')
 					exit(1);
 			}
 		}
-		else
+		else {
 			printf("Nije moguce otvoriti datoteku za citanje kljuca!\n");
+			opcija2 = 1;
+		}
 	} while (opcija2 != 1);
 	fclose(aktivacija);
+	return opcija3;
 }
 
 int citanjeInformacije() {

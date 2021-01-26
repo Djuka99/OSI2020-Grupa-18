@@ -28,34 +28,44 @@ typedef struct korisnik {
 int unosPodataka() {
 	FILE* hr;
 	char username_temp[MAX], password_temp[MAX], temp;
-	int id_temp, status_temp;
+	int id_temp, status_temp, test;
 	HR hracc;
 
 	for (int i = 0; i < MAX; i++)
 		hracc.password[i] = 0;
-
-	printf("\nUsername: "); scanf("%s", hracc.userName);
-	printf("Password: ");
-	temp = _getch();
-	int i = 0;
-	while (temp != 13) {
-		if (temp != 8) {
-			hracc.password[i] = temp;
-			printf("*");
-		}
+	do {
+		printf("\nUsername: "); scanf("%s", hracc.userName);
+		printf("Password: ");
 		temp = _getch();
-		i++;
-	}
-	if ((hr = fopen("../../Datoteke/HR.txt", "r")) != NULL) {
-		while (fscanf(hr, "%d %s %s %d\n", &id_temp, username_temp, password_temp, &status_temp) != EOF)
-			if (strcmp(hracc.userName, username_temp) == 0 && strcmp(hracc.password, password_temp) == 0)
-				return 1;
-	}
-	else
-		printf("\nGreska pri otvaranju datoteke!\n");
+		int i = 0;
+		while (temp != 13) {
+			if (temp != 8) {
+				hracc.password[i] = temp;
+				printf("*");
+			}
+			temp = _getch();
+			i++;
+		}
+		if ((hr = fopen("../../Datoteke/HR.txt", "r")) != NULL) {
+			while (fscanf(hr, "%d %s %s %d\n", &id_temp, username_temp, password_temp, &status_temp) != EOF)
+				if (strcmp(hracc.userName, username_temp) == 0 && strcmp(hracc.password, password_temp) == 0 && status_temp) {
+					if (status_temp == 0) {
+						printf("\nNalog je deaktiviran!\n");
+						return 2;
+					}
+					else
+						return 1;
+				}
+		}
+		else
+			printf("\nGreska pri otvaranju datoteke!\n");
+	} while (status_temp==0);
 	fclose(hr);
 	return 0;
 }
+
+
+
 
 int logovanje() {
 	char c;
@@ -63,7 +73,7 @@ int logovanje() {
 
 	while (brPokusaja && !unosPodataka()) {
 		--brPokusaja;
-		printf("\nPogresan unos podataka! Pokusaj ponovo (T) ili izadji iz aplikacije (E)!\n");
+		printf("\nAkaunt ne postoji ili je deaktiviran!\nPokusaj ponovo (T) ili izadji iz aplikacije (E)!\n");
 		c = _getch();
 
 		while (c != 't' && c != 'T' && c != 'e' && c != 'E')
@@ -106,9 +116,8 @@ int dodavanjeNovog() {
 	FILE* korisnici;
 	KORISNIK krAccount, temp;
 	int b = brojacNaloga("../../Datoteke/Korisnici.txt");
-	int stanjeRadnika = 1;
-	// Promjenljiva koja reprezentuje stanje radnika:
-	// 1 za aktivan nalog i 0 za neaktivan
+	int stanjeRadnika = 1;                                                                                                   // Promjenljiva koja reprezentuje stanje radnika:
+	                                                                                                                         // 1 za aktivan nalog i 0 za neaktivan
 	for (int i = 0; i < MAX; i++)
 		krAccount.password[i] = 0;
 
@@ -125,13 +134,11 @@ int dodavanjeNovog() {
 		if ((korisnici = fopen("../../Datoteke/Korisnici.txt", "r")) != NULL)
 			while (fscanf(korisnici, "%d %s %s %d %s %s %s %s %d %d %d %d", &temp.id, temp.userName, temp.password, &temp.pin, temp.ime, temp.prezime, temp.radnoMjesto, temp.sektor, &temp.datum.dan, &temp.datum.mjesec, &temp.datum.godina, &temp.stanje) != EOF) {
 				if ((strcmp(krAccount.userName, temp.userName) == 0)) {
-					printf("%s\n", temp.ime);
 					printf("Vec postoji nalog sa tim imenom!\n");
 					break;
 				}
 			}
 	} while (fscanf(korisnici, "%d %s %s %d %s %s %s %s %d %d %d %d", &temp.id, temp.userName, temp.password, &temp.pin, temp.ime, temp.prezime, temp.radnoMjesto, temp.sektor, &temp.datum.dan, &temp.datum.mjesec, &temp.datum.godina, &temp.stanje) != EOF);
-	printf("%d", korisnici);
 	fclose(korisnici);
 	do {
 
@@ -186,7 +193,7 @@ int pretragaSektora() {
 		while (fscanf(krAccount, "%d %s %s %d %s %s %s %s %d %d %d %d", &temp.id, temp.userName, temp.password, &temp.pin, temp.ime, temp.prezime, temp.radnoMjesto, temp.sektor, &temp.datum.dan, &temp.datum.mjesec, &temp.datum.godina, &temp.stanje) != EOF)
 			if (strcmp(temp.sektor, korisnik.sektor) == 0)
 			{
-				printf("%d %s %s ( %s )\n", i, temp.ime, temp.prezime, temp.userName);
+				printf("%d %s %s ( %s )\n", i + 1, temp.ime, temp.prezime, temp.userName);
 				i++;
 			}
 		if (i == 0)

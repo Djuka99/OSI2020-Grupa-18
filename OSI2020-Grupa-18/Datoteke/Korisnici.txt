@@ -2,4 +2,5 @@
 2 loja loja123 5555 Zeljko Lojic Cajevac programer 5 10 2020 1
 3 ogi ogi123 1041 Ognjen Djukic RTRK cuvar 1 2 2020 1
 4 Baks fabregas123 2041 Bojan PPetrusic BrijoRudar kopa 9 9 2000 1
-5 mica mica123 1467 Milana Djukic Centar Rashladna 1 1 2020 1
+5 vrlja96 vrljoni 7334 Nemanja Vrljanovic RTRK programer 2 3 2021 0
+6 dzoni dz12o 1467 Nikola Gajic RTRK programer 2 12 2019 1

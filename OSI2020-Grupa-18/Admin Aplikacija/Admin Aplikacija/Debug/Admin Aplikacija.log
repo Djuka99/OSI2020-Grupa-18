@@ -1,16 +1,13 @@
 ﻿  Admin main.c
-C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(221,14): warning C4101: 'hr_temp': unreferenced local variable
-C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(259,14): warning C4101: 'kr_temp': unreferenced local variable
-C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(341,38): warning C4101: 'flag': unreferenced local variable
-C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(389,7): warning C4101: 'opcija': unreferenced local variable
-C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin meni.h(210,4): warning C4550: expression evaluates to a function which is missing an argument list
-C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin meni.h(234,53): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
-C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin meni.h(243,54): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(219,14): warning C4101: 'hr_temp': unreferenced local variable
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(257,14): warning C4101: 'kr_temp': unreferenced local variable
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(339,38): warning C4101: 'flag': unreferenced local variable
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(391,7): warning C4101: 'opcija': unreferenced local variable
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin meni.h(229,10): warning C4101: 'a': unreferenced local variable
 C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(165): warning C4716: 'kreiranjeHR': must return a value
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(254): warning C4716: 'deaktiviranjeHR': must return a value
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(310): warning C4716: 'deaktiviranjeKR': must return a value
 C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(113): warning C4715: 'logovanje': not all control paths return a value
-C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(256): warning C4716: 'deaktiviranjeHR': must return a value
-C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(335): warning C4172: returning address of local variable or temporary: flag_temp
-C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(312): warning C4716: 'deaktiviranjeKR': must return a value
-C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(373): warning C4715: 'unosKoda': not all control paths return a value
-C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(385): warning C4716: 'citanjeInformacije': must return a value
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(333): warning C4172: returning address of local variable or temporary: flag_temp
+C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(387): warning C4716: 'citanjeInformacije': must return a value
   Admin Aplikacija.vcxproj -> C:\Users\djuki\Desktop\OSI Projekat\OSI2020-Grupa-18\Admin Aplikacija\Debug\Admin Aplikacija.exe

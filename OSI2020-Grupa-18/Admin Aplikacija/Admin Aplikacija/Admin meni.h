@@ -207,7 +207,7 @@ void odabirOpcije() {
 			break;
 		case '5':
 			system("cls");
-			meniInfo;
+			meniInfo();
 			opcija = _getch();
 			while (opcija != 'm' && opcija != 'M' && opcija != 'e' && opcija != 'E') {
 				printf("Pogresan unos!\n");
@@ -226,12 +226,12 @@ void odabirOpcije() {
 }
 
 void provjeraMenia() {
-	char c;
+	char c, a;
 	if (strcmp(citanjeFlaga(), "zakljucano") == 0) {
 		restartInformacija();
 		meniZaOtkljucavanje();
 		c = _getch();
-		while (c != 'Y' && c != 'y' && c != 'N' & c != 'n') {
+		while (c != 'Y' && c != 'y' && c != 'N' && c != 'n') {
 			printf("Nepostojeca opcija!\n");
 			c = _getch();
 		}
@@ -240,9 +240,10 @@ void provjeraMenia() {
 			meniZaAktivaciju();
 			printf("\n\nPritisni (Y) za logovanje ili (N) za izlazak iz aplikacije!\n ");
 			c = _getch();
-			while (c != 'Y' && c != 'y' && c != 'N' & c != 'n') {
+			while (c != 'Y' && c != 'y' && c != 'N' && c != 'n') {
 				printf("Nepostojeca opcija!\n");
 				c = _getch();
+			}
 				if (c == 'Y' || c == 'y') {
 					system("cls");
 					meniZaLogovanje();
@@ -250,20 +251,17 @@ void provjeraMenia() {
 				}
 				else
 					exit(1);
-			}
-
+			
 		}
-
-		else if (c == 'N' || c == 'n') {
+		else  {
 			system("cls");
 			meniZaLogovanje();
 			glavniMeni();
-		}
-	
+		}	
 	}
 		else
 			meniZaLogovanje();
-	glavniMeni();
+	
 }
 
 
