@@ -22,18 +22,20 @@ typedef struct korisnik {
 	DATUM datum;
 }KORISNIK;
 
+typedef struct informacija {
+	char ime[MAX], email[MAX], broj[MAX];
+}INFO;
 
 
 
 int unosPodataka() {
 	FILE* hr;
-	char username_temp[MAX], password_temp[MAX], temp;
+	char username_temp[MAX], password_temp[MAX], temp, opcija;
 	int id_temp, status_temp, test;
 	HR hracc;
 
 	for (int i = 0; i < MAX; i++)
 		hracc.password[i] = 0;
-	do {
 		printf("\nUsername: "); scanf("%s", hracc.userName);
 		printf("Password: ");
 		temp = _getch();
@@ -48,18 +50,11 @@ int unosPodataka() {
 		}
 		if ((hr = fopen("../../Datoteke/HR.txt", "r")) != NULL) {
 			while (fscanf(hr, "%d %s %s %d\n", &id_temp, username_temp, password_temp, &status_temp) != EOF)
-				if (strcmp(hracc.userName, username_temp) == 0 && strcmp(hracc.password, password_temp) == 0 && status_temp) {
-					if (status_temp == 0) {
-						printf("\nNalog je deaktiviran!\n");
-						return 2;
-					}
-					else
-						return 1;
-				}
+				if (strcmp(hracc.userName, username_temp) == 0 && strcmp(hracc.password, password_temp) == 0 && status_temp) 
+					return 1;
 		}
 		else
 			printf("\nGreska pri otvaranju datoteke!\n");
-	} while (status_temp==0);
 	fclose(hr);
 	return 0;
 }
@@ -112,14 +107,19 @@ int brojacNaloga(char* imeFajla) {																									     // Funkcija koja
 	return brojac;
 }
 
+
 int dodavanjeNovog() {
-	FILE* korisnici;
+	FILE* korisnici, * prijaveRadnika, * satiRadnika;
 	KORISNIK krAccount, temp;
-	int b = brojacNaloga("../../Datoteke/Korisnici.txt");
-	int stanjeRadnika = 1;                                                                                                   // Promjenljiva koja reprezentuje stanje radnika:
-	                                                                                                                         // 1 za aktivan nalog i 0 za neaktivan
+	char txtPrijave[MAXF] = "../../Datoteke/Baza radnika/Prijave radnika/";
+	char txtSati[MAXF] = "../../Datoteke/Baza radnika/Sati radnika/";
+	int b = brojacNaloga("../../Datoteke/Korisnici.txt"), stanjeRadnika = 1;													// Promjenljiva koja reprezentuje stanje radnika:
+	 
+																																// 1 za aktivan nalog i 0 za neaktivan
 	for (int i = 0; i < MAX; i++)
 		krAccount.password[i] = 0;
+	
+
 
 	do {
 
@@ -153,8 +153,18 @@ int dodavanjeNovog() {
 
 	} while (fscanf(korisnici, "%d %s %s %d %s %s %s %s %d %d %d %d", &temp.id, temp.userName, temp.password, &temp.pin, temp.ime, temp.prezime, temp.radnoMjesto, temp.sektor, &temp.datum.dan, &temp.datum.mjesec, &temp.datum.godina, &temp.stanje) != EOF);
 	fclose(korisnici);
-	if ((korisnici = fopen("../../Datoteke/Korisnici.txt", "a")) != NULL)
+	if ((korisnici = fopen("../../Datoteke/Korisnici.txt", "a")) != NULL) {
 		fprintf(korisnici, "%d %s %s %d %s %s %s %s %d %d %d %d\n", b, krAccount.userName, krAccount.password, krAccount.pin, krAccount.ime, krAccount.prezime, krAccount.radnoMjesto, krAccount.sektor, krAccount.datum.dan, krAccount.datum.mjesec, krAccount.datum.godina, stanjeRadnika);
+
+		strcat(txtPrijave, krAccount.userName);
+		strcat(txtPrijave, ".txt");
+		strcat(txtSati, krAccount.userName);
+		strcat(txtSati, ".txt");
+		prijaveRadnika = fopen(txtPrijave, "w");
+		fclose(prijaveRadnika);
+		satiRadnika = fopen(txtSati, "w");
+		fclose(satiRadnika);
+	}
 	else
 		printf("Nije moguce otvoriti HR datoteku!\n");
 	fclose(korisnici);
@@ -204,18 +214,47 @@ int pretragaSektora() {
 	fclose(krAccount);
 }
 
-int pretragaPoBazi() {
-	char c;
-	
-	c = _getch();
-	while (c != '1' && c != '2') {
-		printf("Nepostojeca opcija!\n");
-		c = _getch();
-	}
+int pretragaImena() {
+	FILE* krAccount;
+	KORISNIK korisnik, temp;
+	char str[MAX];
+	int i = 0;
+	printf("Unesi ime i prezime radnika: "); scanf("%s %s", korisnik.ime, korisnik.prezime);
 
-	if (c == '1')
-		pretragaRadnogMjesta();
+	if ((krAccount = fopen("../../Datoteke/Korisnici.txt", "r")) != NULL) {
+		while (fscanf(krAccount, "%d %s %s %d %s %s %s %s %d %d %d %d", &temp.id, temp.userName, temp.password, &temp.pin, temp.ime, temp.prezime, temp.radnoMjesto, temp.sektor, &temp.datum.dan, &temp.datum.mjesec, &temp.datum.godina, &temp.stanje) != EOF)
+			if (strcmp(temp.ime, korisnik.ime) == 0 && strcmp(temp.prezime, korisnik.prezime) == 0)
+			{
+				printf("Ime:               %s\n", temp.ime);
+				printf("Prezime:           %s\n", temp.prezime);
+				printf("Username:          %s\n", temp.userName);
+				printf("Password:          %s\n", temp.password);
+				printf("PIN:               %d\n", temp.pin);
+				printf("Radno mjesto:      %s\n", temp.radnoMjesto);
+				printf("Sektor:            %s\n", temp.sektor);
+				printf("Zaposlen od:       %d.%d.%d\n\n", temp.datum.dan, temp.datum.mjesec, temp.datum.godina);
+				if (temp.stanje == 0)
+					printf("Stanje: Nalog je deaktiviran\n");
+				else
+					printf("Stanje: Nalog je aktivan\n");
+				i++;
+			}
+		if (i == 0)
+			printf("U bazi nema nikoga u tom sektoru!\n");
+	}
 	else
-		pretragaSektora();
+		printf("Ne moze otvoriti Korisnici.txt za pretragu sektora!\n");
+	fclose(krAccount);
+}
+
+int citanjeInformacije() {
+	FILE* informacije;
+	INFO info;
+
+	if ((informacije = fopen("../../Datoteke/Informacije.txt", "r")) != NULL)
+		fscanf(informacije, "%s %s %s", info.ime, info.email, info.broj);
+	else printf("Nije moguce otvoriti Informacije.txt!\n");
+	fclose(informacije);
+	printf("%s\n%s\n%s\n", info.ime, info.email, info.broj);
 
 }

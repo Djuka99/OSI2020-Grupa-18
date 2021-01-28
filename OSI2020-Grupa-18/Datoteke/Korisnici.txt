@@ -4,3 +4,5 @@
 4 Baks fabregas123 2041 Bojan PPetrusic BrijoRudar kopa 9 9 2000 1
 5 vrlja96 vrljoni 7334 Nemanja Vrljanovic RTRK programer 2 3 2021 0
 6 dzoni dz12o 1467 Nikola Gajic RTRK programer 2 12 2019 1
+7 joka joka123 7334 Jovanka Djukic 2 2 1 2 3 1
+9 mico c 9500 Miladin Djukic c c 1 1 1 1

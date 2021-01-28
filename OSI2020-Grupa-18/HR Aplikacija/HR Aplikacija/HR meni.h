@@ -5,51 +5,87 @@
 #include <Windows.h>
 #include "HR funkcije.h"
 
-void glavniMeni() {
-
-	system("cls");
+void zaglavlje() {
 	printf("----------------------------------------------------------------\n");
+	citanjeInformacije();
+	printf("----------------------------------------------------------------\n");
+}
+
+void footer() {
+	printf("\n\n----------------------------------------------------------------\n");
+	printf("Unesi M za povratak na glavni meni ili E za izlazak iz programa!\n");
+	printf("----------------------------------------------------------------\n\n");
+}
+
+void glavniMeni() {
+	system("cls");
+	zaglavlje();
 	printf("\t\t\tWELCOME\n");
 	printf("----------------------------------------------------------------\n");
-	printf("Odaberite opciju:\n");
-	printf("1:Dodavanje novog zaposlenog\n");
-	printf("2:Pregled prijava radnika\n");
-	printf("3:Pretraga po bazi\n");
-	printf("0:Za izlazak iz aplikacije\n\n");
+	printf("\nOdaberite opciju:\n");
+	printf("1-> Dodavanje novog zaposlenog\n");
+	printf("2-> Pregled prijava radnika\n");
+	printf("3-> Pretraga po bazi\n\n");
+	printf("0-> Za izlazak iz aplikacije\n\n");
 
 }
 
 void meniZaLogovanje() {
-	printf("----------------------------------------------------------------\n");
-	printf("\t\t\tLOGIN\n");
-	printf("----------------------------------------------------------------\n");
+	zaglavlje();
+	printf("\t\t\tHR APLIKACIJA\n");
+	printf("----------------------------------------------------------------\n\n");
 	logovanje();
 }
 
 void dodavanjeNovogZaposlenog() {
-	printf("----------------------------------------------------------------\n");
+	zaglavlje();
 	printf("\t\t\tDODAVANJE NOVOG ZAPOSLENOG\n");
-	printf("----------------------------------------------------------------\n");
+	printf("----------------------------------------------------------------\n\n");
 	dodavanjeNovog();
+	footer();
 }
 
 void pregledPrijavaRadnika() {
-	printf("----------------------------------------------------------------\n");
+	zaglavlje();
 	printf("\t\t\tPREGLED PRIJAVA RADNIKA\n");
 	printf("----------------------------------------------------------------\n");
 	//pregledPrijava();
+	footer();
 }
 
 void pretragaBaze() {
-	printf("----------------------------------------------------------------\n");
+	zaglavlje();
 	printf("\t\t\tPRETRAGA BAZE\n");
 	printf("----------------------------------------------------------------\n\n");
 	printf("Izaberi opciju:\n");
-	printf("1: Prikaz radnika po radnom mjestu\n");
-	printf("2: Prikaz radnika po sektoru\n");
-	pretragaPoBazi();
+	printf("1-> Prikaz radnika po radnom mjestu\n");
+	printf("2-> Prikaz radnika po sektoru\n");
+	printf("3-> Prikaz radnika po imenu i prezimenu\n");
 }
 
+void pretragaBazePoRM() {
+	zaglavlje();
+	printf("\t\tPRETRAGA BAZE PO RADNOM MJESTU\n");
+	printf("----------------------------------------------------------------\n\n");
+	pretragaRadnogMjesta();
+	footer();
+}
+
+void pretragaBazePoSE() {
+	zaglavlje();
+	printf("\t\tPRETRAGA BAZE PO SEKTORU\n");
+	printf("----------------------------------------------------------------\n\n");
+	pretragaSektora();
+	footer();
+}
+
+void pretragaBazePoIme() {
+	zaglavlje();
+	printf("\t\tPRETRAGA BAZE PO IMENU\n");
+	printf("----------------------------------------------------------------\n\n");
+	pretragaImena();
+	footer();
+}
 
 void odabirOpcije() {
 	char opcija;
@@ -94,7 +130,7 @@ void odabirOpcije() {
 			system("cls");
 			pretragaBaze();
 			opcija = _getch();
-			while (opcija != 'm' && opcija != 'M' && opcija != 'e' && opcija != 'E') {
+			while (opcija != 'm' && opcija != 'M' && opcija != 'e' && opcija != 'E' && opcija != '1' && opcija != '2' && opcija != '3') {
 				printf("Pogresan unos!\n");
 				opcija = _getch();
 			}
@@ -103,6 +139,19 @@ void odabirOpcije() {
 				glavniMeni();
 			else if (opcija == 'e' || opcija == 'E')
 				exit(1);
+			else if (opcija == '1') {
+				system("cls");
+				pretragaBazePoRM();
+			}
+			else if (opcija == '2') {
+				system("cls");
+				pretragaBazePoSE();
+			}
+			else if (opcija == '3') {
+				system("cls");
+				pretragaBazePoIme();
+			}
+
 			break;
 		default:
 			printf("Nepostojeca opcija!\n");

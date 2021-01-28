@@ -79,7 +79,7 @@ int unosPodataka() {
 
 int logovanje() {
 	char c;
-	int brPokusaja = 2;
+	int brPokusaja = 3;
 
 	while (brPokusaja && !unosPodataka()) {
 		--brPokusaja;
