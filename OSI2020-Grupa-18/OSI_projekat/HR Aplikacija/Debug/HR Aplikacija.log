@@ -1,6 +1,0 @@
-﻿  HR_main.c
-C:\Users\djuki\Desktop\OSI\Zadnji put\HR Aplikacija\HR_funkcije.h(86,21): warning C4047: '!=': 'char [5]' differs in levels of indirection from 'int'
-C:\Users\djuki\Desktop\OSI\Zadnji put\HR Aplikacija\HR_funkcije.h(86,32): warning C4047: '!=': 'char [5]' differs in levels of indirection from 'int'
-C:\Users\djuki\Desktop\OSI\Zadnji put\HR Aplikacija\HR_funkcije.h(88): warning C4715: 'logovanje': not all control paths return a value
-C:\Users\djuki\Desktop\OSI\Zadnji put\HR Aplikacija\HR_funkcije.h(154): warning C4716: 'dodavanjeNovog': must return a value
-  HR Aplikacija.vcxproj -> C:\Users\djuki\Desktop\OSI\Zadnji put\Debug\HR Aplikacija.exe
