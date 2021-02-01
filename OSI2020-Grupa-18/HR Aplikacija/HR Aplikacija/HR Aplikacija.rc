@@ -52,6 +52,7 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
+IDI_ICON3               ICON                    "C:\\Users\\djuki\\Desktop\\OSI projekat\\OSI2020-Grupa-18\\Datoteke\\icons\\HR.ico"
 
 #endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////

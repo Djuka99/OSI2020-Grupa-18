@@ -1,5 +1,0 @@
-void vrijeme(int sek,int* sati,int* minute,int* sekunde){
-    *sati=(sek/3600);
-    *minute=((sek-(3600*(*sati)))/60);
-    *sekunde=(sek-(3600*(*sati))-((*minute)*60));
-    }
