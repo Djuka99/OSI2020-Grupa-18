@@ -1,1 +1,3 @@
-﻿  Korisnicka Aplikacija.vcxproj -> C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Debug\Korisnicka Aplikacija.exe
+﻿  Korisnicka main.c
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Korisnicka Aplikacija\Korisnicka Aplikacija\Korisnicka funkcije.h(110,7): warning C4101: 'str': unreferenced local variable
+  Korisnicka Aplikacija.vcxproj -> C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Debug\Korisnicka Aplikacija.exe

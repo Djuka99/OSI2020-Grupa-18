@@ -366,7 +366,11 @@ void citanjeInformacije() {
 		fscanf(informacije, "%s %s %s", info.ime, info.email, info.broj);
 	else printf("Nije moguce otvoriti Informacije.txt!\n");
 	fclose(informacije);
-	printf("%s\n%s\n%s\n", info.ime, info.email, info.broj);
+	printf("\t\t\t\t         ___ ___ _  _  ___  ___\n");
+	printf("%-10s", info.ime); printf("\t\t\t\t| _ \\_ _| \\| |/ __|/ _ \\ \n");
+	printf("%-10s", info.email); printf("\t\t\t\t|  _/| || .` | (_ | (_) |\n");
+	printf("%-10s", info.broj); printf("\t\t\t\t|_| |___|_|\\_|\\___|\\___/ \n\n");
+	
 
 }
 

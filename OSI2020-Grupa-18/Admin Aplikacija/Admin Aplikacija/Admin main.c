@@ -7,6 +7,7 @@
 int main() {
 
 	system("title Admin");
+
 	HWND console = GetConsoleWindow();
 	RECT r;
 	GetWindowRect(console, &r);

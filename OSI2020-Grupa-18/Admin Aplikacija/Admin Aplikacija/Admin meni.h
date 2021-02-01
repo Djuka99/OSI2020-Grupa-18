@@ -5,6 +5,14 @@
 #include <stdlib.h>
 #include <Windows.h>
 
+void naslov() {
+
+	printf(" ___ ___ _  _  ___  ___\n");
+	printf("| _ \\_ _| \\| |/ __|/ _ \\ \n");
+	printf("|  _/| || .` | (_ | (_) |\n");
+	printf("|_| |___|_|\\_|\\___|\\___/ \n");
+
+}
 
 void glavniMeni() {
 	system("cls");
