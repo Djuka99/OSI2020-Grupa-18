@@ -133,8 +133,10 @@ int kreiranjeHR() {
 	FILE* hr;
 	HR hrAccount, temp;
 	int b = brojacNaloga("../../Datoteke/HR.txt");
-	int stanjeRadnika = 1;															                                         // Promjenljiva koja reprezentuje stanje radnika:
-																															 // 1 za aktivan nalog i 0 za neaktivan
+
+	//Stanje radnika je aktivno po kreiranju HR naloga
+	int stanjeRadnika = 1;															                                         
+																															 
 	for (int i = 0; i < MAX; i++)
 		hrAccount.password[i] = 0;
 
@@ -161,7 +163,8 @@ int kreiranjeHR() {
 
 }
 
-int zamjena(char* fname, int brLinije, char* novaLinija)							                                         // Funkcija koja ce mijenjati stanje radnika
+// Funkcija koja ce mijenjati stanje radnika
+int zamjena(char* fname, int brLinije, char* novaLinija)							                                         
 {
 	FILE* fptr1, * fptr2;
 	int  linectr = 0;
@@ -217,7 +220,9 @@ int deaktiviranjeHR() {
 			brLinija++;
 			if (strcmp(hrAccount.userName, temp_u) == 0)
 			{
-				hrAccount.stanje = 0;																						 // Konverujem int u string i spajam sve u jedan string 
+				hrAccount.stanje = 0;	
+
+				// Konverujem int u string i spajam sve u jedan string
 				_itoa(hrAccount.id, idChar, 10);
 				_itoa(hrAccount.stanje, stanjeChar, 10);
 				strcat(linija, idChar);
@@ -253,7 +258,9 @@ int deaktiviranjeKR() {
 			brLinija++;
 			if (strcmp(krAccount.ime, temp_u) == 0)
 			{
-				krAccount.stanje = 0;																						 // Konvertujem int u string i spajam sve u jedan string 
+				krAccount.stanje = 0;	
+				
+				// Konvertujem int u string i spajam sve u jedan string
 				_itoa(krAccount.id, idChar, 10);
 				_itoa(krAccount.stanje, stanjeChar, 10);
 				_itoa(krAccount.datum.dan, danChar, 10);
@@ -295,6 +302,7 @@ int deaktiviranjeKR() {
 	opcija = _getch();
 }
 
+//Funkcija kojom u datoteku Validnost kljuca.txt upisujem flag (zakljucano ili otkljucano)
 void upisFlaga(char* flag) {
 	FILE* Validnost_kljuca;
 	if (Validnost_kljuca = fopen("../../Datoteke/Validnost kljuca.txt", "w"))
@@ -305,6 +313,7 @@ void upisFlaga(char* flag) {
 
 }
 
+//Citam iz datoteke Validnost kljuca.txt flag
 char* citanjeFlaga() {
 	FILE* Validnost_kljuca;
 	char flag[MAX], flag_temp[MAX];
@@ -319,6 +328,7 @@ char* citanjeFlaga() {
 	return flag_temp;
 }
 
+//Funkcija kojom unosim kljuc 
 int unosKoda() {
 	char kod[50], temp_kod[50], opcija, flag;
 	int  opcija2 = 0, opcija3 = 0;
