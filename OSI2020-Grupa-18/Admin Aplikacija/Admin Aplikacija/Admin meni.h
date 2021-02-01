@@ -5,20 +5,21 @@
 #include <stdlib.h>
 #include <Windows.h>
 
-void naslov() {
+void zaglavlje() {
+	printf("----------------------------------------------------------------\n");
+	citanjeInformacije();
+	printf("----------------------------------------------------------------\n");
+}
 
-	printf(" ___ ___ _  _  ___  ___\n");
-	printf("| _ \\_ _| \\| |/ __|/ _ \\ \n");
-	printf("|  _/| || .` | (_ | (_) |\n");
-	printf("|_| |___|_|\\_|\\___|\\___/ \n");
-
+void footer() {
+	printf("\n\n----------------------------------------------------------------\n");
+	printf("Unesi M za povratak na glavni meni ili E za izlazak iz programa!\n");
+	printf("----------------------------------------------------------------\n\n");
 }
 
 void glavniMeni() {
 	system("cls");
-	printf("----------------------------------------------------------------\n");
-	citanjeInformacije();
-	printf("----------------------------------------------------------------\n");
+	zaglavlje();
 	printf("\t\t\tWELCOME ADMIN\n");
 	printf("----------------------------------------------------------------\n");
 	printf("Odaberite opciju:\n");
@@ -31,64 +32,47 @@ void glavniMeni() {
 }
 
 void meniZaLogovanje() {
-	printf("----------------------------------------------------------------\n");
-	citanjeInformacije();
-	printf("----------------------------------------------------------------\n");
+	zaglavlje();
 	printf("\t\t\tLOGIN\n");
 	printf("----------------------------------------------------------------\n");
 	logovanje();
 }
 
 void meniKreiranjeHR() {
-	printf("----------------------------------------------------------------\n");
-	citanjeInformacije();
-	printf("----------------------------------------------------------------\n");
+	zaglavlje();
 	printf("\t\tKREIRANJE HR NALOGA\n");
 	printf("----------------------------------------------------------------\n");
-	printf("Unesi M za povratak na glavni meni ili E za izlazak iz programa!\n");
-	printf("----------------------------------------------------------------\n\n");
 	kreiranjeHR();
+	footer();
 
 }
 
 void meniZaDeaktiviranjeHR() {
-	printf("----------------------------------------------------------------\n");
-	citanjeInformacije();
-	printf("----------------------------------------------------------------\n");
+	zaglavlje();
 	printf("\t\tDEAKTIVIRANJE HR NALOGA\n");
 	printf("----------------------------------------------------------------\n");
-	printf("Unesi M za povratak na glavni meni ili E za izlazak iz programa!\n");
-	printf("----------------------------------------------------------------\n\n");
 	deaktiviranjeHR();
+	footer();
 }
 
 void meniZaDeaktiviranjeKN() {
-	printf("----------------------------------------------------------------\n");
-	citanjeInformacije();
-	printf("----------------------------------------------------------------\n");
+	zaglavlje();
 	printf("\t\tDEAKTIVIRANJE KORISNICKOG NALOGA\n");
 	printf("----------------------------------------------------------------\n");
-	printf("Unesi M za povratak na glavni meni ili E za izlazak iz programa!\n");
-	printf("----------------------------------------------------------------\n\n");
 	deaktiviranjeKR();
+	footer();
 }
 
 void meniZaAktivaciju() {
-	printf("----------------------------------------------------------------\n");
-	citanjeInformacije();
-	printf("----------------------------------------------------------------\n");
+	zaglavlje();
 	printf("\t\tOTKLJUCAVANJE APLIKACIJE\n");
 	printf("----------------------------------------------------------------\n");
-	printf("Unesi M za povratak na glavni meni ili E za izlazak iz programa!\n");
-	printf("----------------------------------------------------------------\n\n");
 	unosKoda();
 
 }
 
 void meniInfo() {
-	printf("----------------------------------------------------------------\n");
-	citanjeInformacije();
-	printf("----------------------------------------------------------------\n");
+	zaglavlje();
 	printf("\t\tINFO\n");
 	printf("----------------------------------------------------------------\n");
 	printf("Unesi M za povratak na glavni meni ili E za izlazak iz programa!\n");
@@ -100,21 +84,17 @@ void meniInfo() {
 }
 
 void meniZaOtkljucavanje() {
+	zaglavlje();
+	printf("\t\tAplikacija nije otkljucana\n");
 	printf("----------------------------------------------------------------\n");
-	citanjeInformacije();
-	printf("------------------------------------------------------------------------------------------------------------------------\n");
-	printf("\t\t\t\tAplikacija nije otkljucana\n");
-	printf("------------------------------------------------------------------------------------------------------------------------\n");
-	printf("Da li zelite otkljucati aplikaciju ili nastaviti sa besplatnom verzijom?\n(Y)-> za unos koda\n(N)-> za besplatnu verziju.\n");
+	printf("Da li zelite otkljucati aplikaciju?\n(Y)-> za unos koda\n(N)-> za besplatnu verziju.\n");
 }
 
 void meniZaIzmjenuInformacija() {
 	char opcija;
-	printf("----------------------------------------------------------------\n");
-	citanjeInformacije();
-	printf("------------------------------------------------------------------------------------------------------------------------\n");
+	zaglavlje();
 	printf("\t\t\t\tIzmjena informacija\n");
-	printf("------------------------------------------------------------------------------------------------------------------------\n");
+	printf("----------------------------------------------------------------\n");
 	if (strcmp(citanjeFlaga(), "zakljucano") == 0) {
 		printf("Ova opcija je dostupna samo za korisnike sa otkljucanom aplikacijom!\n\n");
 		printf("Izaberite opciju\n1-> Povratak na glavni meni\n2-> Izlazak iz aplikacije\n");

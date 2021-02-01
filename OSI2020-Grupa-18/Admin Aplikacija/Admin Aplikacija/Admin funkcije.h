@@ -324,7 +324,7 @@ int unosKoda() {
 	int  opcija2 = 0, opcija3 = 0;
 	FILE* aktivacija;
 
-	printf("Napomena: prilikom unosa karaktera moraju biti velika slova i - (minus) izmedju. NPR: XXX-XXX-XXX\n\n\n\n");
+	printf("Napomena:\nKljuc mora biti unijet u formatu: XXX-XXX-XXX\n\n\n\n");
 	do {
 		printf("Unesi kljuc: "); scanf("%s", temp_kod);
 		if ((aktivacija = fopen("../../Datoteke/Aktivacioni kod.txt", "r")) != NULL) {
@@ -366,10 +366,10 @@ void citanjeInformacije() {
 		fscanf(informacije, "%s %s %s", info.ime, info.email, info.broj);
 	else printf("Nije moguce otvoriti Informacije.txt!\n");
 	fclose(informacije);
-	printf("\t\t\t\t         ___ ___ _  _  ___  ___\n");
-	printf("%-10s", info.ime); printf("\t\t\t\t| _ \\_ _| \\| |/ __|/ _ \\ \n");
-	printf("%-10s", info.email); printf("\t\t\t\t|  _/| || .` | (_ | (_) |\n");
-	printf("%-10s", info.broj); printf("\t\t\t\t|_| |___|_|\\_|\\___|\\___/ \n\n");
+	printf("\t\t\t                 ___ ___ _  _  ___  ___\n");
+	printf("%-20s", info.ime); printf("\t\t\t| _ \\_ _| \\| |/ __|/ _ \\ \n");
+	printf("%-20s", info.email); printf("\t\t\t|  _/| || .` | (_ | (_) |\n");
+	printf("%-20s", info.broj); printf("\t\t\t|_| |___|_|\\_|\\___|\\___/ \n\n");
 	
 
 }
