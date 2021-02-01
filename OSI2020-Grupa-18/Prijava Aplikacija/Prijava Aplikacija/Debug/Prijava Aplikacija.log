@@ -1,1 +1,4 @@
-﻿  Prijava Aplikacija.vcxproj -> C:\Users\djuki\Desktop\OSI2020-Grupa-18\Admin Aplikacija\Debug\Prijava Aplikacija.exe
+﻿  Prijava main.c
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Prijava Aplikacija\Prijava Aplikacija\Prijava funkcije.h(49,7): warning C4101: 'ime': unreferenced local variable
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Prijava Aplikacija\Prijava Aplikacija\Prijava funkcije.h(159,1): warning C4047: 'initializing': 'char' differs in levels of indirection from 'char [11]'
+  Prijava Aplikacija.vcxproj -> C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Debug\Prijava Aplikacija.exe
