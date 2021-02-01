@@ -1,4 +1,1 @@
-﻿  Prijava main.c
-C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Prijava Aplikacija\Prijava Aplikacija\Prijava funkcije.h(40): warning C4716: 'citanjeInformacije': must return a value
-C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Prijava Aplikacija\Prijava Aplikacija\Prijava funkcije.h(87): warning C4715: 'logovanje': not all control paths return a value
-  Prijava Aplikacija.vcxproj -> C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Debug\Prijava Aplikacija.exe
+﻿  Prijava Aplikacija.vcxproj -> C:\Users\djuki\Desktop\OSI2020\OSI2020-Grupa-18\Admin Aplikacija\Debug\Prijava Aplikacija.exe
