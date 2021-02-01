@@ -51,9 +51,7 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-<<<<<<< HEAD
 *.vs
 .vs
-=======
-*.vs
->>>>>>> 73dda4f5bf47ebd18bd09a2efff0caf5d135975d
+
+
