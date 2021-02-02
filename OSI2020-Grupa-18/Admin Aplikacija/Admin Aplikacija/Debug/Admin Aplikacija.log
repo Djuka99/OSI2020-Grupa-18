@@ -1,12 +1,13 @@
 ﻿  Admin main.c
-C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(207,14): warning C4101: 'hr_temp': unreferenced local variable
-C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(243,14): warning C4101: 'kr_temp': unreferenced local variable
-C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(323,38): warning C4101: 'flag': unreferenced local variable
-C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(379,7): warning C4101: 'opcija': unreferenced local variable
-C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin meni.h(215,10): warning C4101: 'a': unreferenced local variable
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(210,14): warning C4101: 'hr_temp': unreferenced local variable
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(251,7): warning C4101: 'opcija': unreferenced local variable
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(248,14): warning C4101: 'kr_temp': unreferenced local variable
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(332,38): warning C4101: 'flag': unreferenced local variable
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(388,7): warning C4101: 'opcija': unreferenced local variable
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin meni.h(213,10): warning C4101: 'a': unreferenced local variable
 C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(115): warning C4715: 'logovanje': not all control paths return a value
-C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(162): warning C4716: 'kreiranjeHR': must return a value
-C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(296): warning C4716: 'deaktiviranjeKR': must return a value
-C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(240): warning C4716: 'deaktiviranjeHR': must return a value
-C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(319): warning C4172: returning address of local variable or temporary: flag_temp
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(164): warning C4716: 'kreiranjeHR': must return a value
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(245): warning C4716: 'deaktiviranjeHR': must return a value
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(302): warning C4716: 'deaktiviranjeKR': must return a value
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Admin Aplikacija\Admin funkcije.h(327): warning C4172: returning address of local variable or temporary: flag_temp
   Admin Aplikacija.vcxproj -> C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Debug\Admin Aplikacija.exe

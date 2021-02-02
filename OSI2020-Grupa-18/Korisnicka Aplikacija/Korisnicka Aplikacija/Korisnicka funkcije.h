@@ -50,7 +50,7 @@ int unosPodataka() {
 
 	for (int i = 0; i < MAX; i++)
 		kracc.password[i] = 0;
-	printf("\nUsername: "); scanf("%s", kracc.userName); strcat(userName, kracc.userName);
+	printf("\nUsername: "); scanf("%s", kracc.userName); strcpy(userName, ""); strcat(userName, kracc.userName);
 	printf("Password: ");
 	tmp = _getch();
 	int i = 0;
@@ -62,6 +62,7 @@ int unosPodataka() {
 		tmp = _getch();
 		i++;
 	}
+	strcpy(password, "");
 	strcat(password, kracc.password);
 	if ((korisnici = fopen("../../Datoteke/Korisnici.txt", "r")) != NULL) {
 		while (fscanf(korisnici, "%d %s %s %d %s %s %s %s %d %d %d %d", &temp.id, temp.userName, temp.password, &temp.pin, temp.ime, temp.prezime, temp.radnoMjesto, temp.sektor, &temp.datum.dan, &temp.datum.mjesec, &temp.datum.godina, &temp.stanje) != EOF)
@@ -111,7 +112,7 @@ void pretragaInformacija() {
 	int i = 0;
 	if ((krAccount = fopen("../../Datoteke/Korisnici.txt", "r")) != NULL) {
 		while (fscanf(krAccount, "%d %s %s %d %s %s %s %s %d %d %d %d", &temp.id, temp.userName, temp.password, &temp.pin, temp.ime, temp.prezime, temp.radnoMjesto, temp.sektor, &temp.datum.dan, &temp.datum.mjesec, &temp.datum.godina, &temp.stanje) != EOF)
-			if (strcmp(temp.userName, userName) == 0 && strcmp(temp.password, password) == 0)
+			if (strcmp(temp.userName, userName) == 0)
 			{
 				printf("Ime:               %s\n", temp.ime);
 				printf("Prezime:           %s\n", temp.prezime);

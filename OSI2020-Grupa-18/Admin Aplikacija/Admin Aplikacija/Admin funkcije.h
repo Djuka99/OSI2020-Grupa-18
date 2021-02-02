@@ -299,7 +299,6 @@ int deaktiviranjeKR() {
 		zamjena("../../Datoteke/Korisnici.txt", brLinija, linija);
 	else
 		printf("Nalog radnika je vec neaktivan!");
-	opcija = _getch();
 }
 
 //Funkcija kojom u datoteku Validnost kljuca.txt upisujem flag (zakljucano ili otkljucano)

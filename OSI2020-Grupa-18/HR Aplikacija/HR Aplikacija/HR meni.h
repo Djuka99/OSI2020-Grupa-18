@@ -189,14 +189,44 @@ void odabirOpcije() {
 			else if (opcija == '1') {
 				system("cls");
 				pretragaBazePoRM();
+				opcija = _getch();
+				while (opcija != 'm' && opcija != 'M' && opcija != 'e' && opcija != 'E' && opcija != '1' && opcija != '2' && opcija != '3') {
+					printf("Pogresan unos!\n");
+					opcija = _getch();
+				}
+
+				if (opcija == 'm' || opcija == 'M')
+					glavniMeni();
+				else if (opcija == 'e' || opcija == 'E')
+					exit(1);
 			}
 			else if (opcija == '2') {
 				system("cls");
 				pretragaBazePoSE();
+				opcija = _getch();
+				while (opcija != 'm' && opcija != 'M' && opcija != 'e' && opcija != 'E' && opcija != '1' && opcija != '2' && opcija != '3') {
+					printf("Pogresan unos!\n");
+					opcija = _getch();
+				}
+
+				if (opcija == 'm' || opcija == 'M')
+					glavniMeni();
+				else if (opcija == 'e' || opcija == 'E')
+					exit(1);
 			}
 			else if (opcija == '3') {
 				system("cls");
 				pretragaBazePoIme();
+				opcija = _getch();
+				while (opcija != 'm' && opcija != 'M' && opcija != 'e' && opcija != 'E' && opcija != '1' && opcija != '2' && opcija != '3') {
+					printf("Pogresan unos!\n");
+					opcija = _getch();
+				}
+
+				if (opcija == 'm' || opcija == 'M')
+					glavniMeni();
+				else if (opcija == 'e' || opcija == 'E')
+					exit(1);
 			}
 
 			break;

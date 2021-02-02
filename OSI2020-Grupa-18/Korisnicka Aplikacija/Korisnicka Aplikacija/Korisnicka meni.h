@@ -33,7 +33,7 @@ void glavniMeni() {
 
 void meniZaLogovanje() {
 	zaglavlje();
-	printf("\t\t\tKORISNICKA APLIKACIJA\n");
+	printf("\t\tKORISNICKA APLIKACIJA\n");
 	printf("----------------------------------------------------------------\n\n");
 	logovanje();
 }
@@ -67,6 +67,9 @@ void odabirKorisnika() {
 	opcija = _getch();
 
 	switch (opcija) {
+	case'0':
+		exit(1);
+		break;
 	case'1':
 		system("cls");
 		prikazInformacija();
@@ -76,8 +79,10 @@ void odabirKorisnika() {
 			opcija = _getch();
 		}
 
-		if (opcija == 'm' || opcija == 'M')
+		if (opcija == 'm' || opcija == 'M') {
 			glavniMeni();
+			odabirKorisnika();
+		}
 		else if (opcija == 'e' || opcija == 'E')
 			exit(1);
 		break;
@@ -90,8 +95,10 @@ void odabirKorisnika() {
 			opcija = _getch();
 		}
 
-		if (opcija == 'm' || opcija == 'M')
+		if (opcija == 'm' || opcija == 'M') {
 			glavniMeni();
+			odabirKorisnika();
+		}
 		else if (opcija == 'e' || opcija == 'E')
 			exit(1);
 		break;
@@ -104,8 +111,10 @@ void odabirKorisnika() {
 			opcija = _getch();
 		}
 
-		if (opcija == 'm' || opcija == 'M')
+		if (opcija == 'm' || opcija == 'M') {
 			glavniMeni();
+			odabirKorisnika();
+		}
 		else if (opcija == 'e' || opcija == 'E')
 			exit(1);
 		break;

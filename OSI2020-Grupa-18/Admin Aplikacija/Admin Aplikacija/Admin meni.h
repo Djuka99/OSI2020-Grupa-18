@@ -91,38 +91,10 @@ void meniZaOtkljucavanje() {
 }
 
 void meniZaIzmjenuInformacija() {
-	char opcija;
 	zaglavlje();
-	printf("\t\t\t\tIzmjena informacija\n");
+	printf("\t\tIzmjena informacija\n");
 	printf("----------------------------------------------------------------\n");
-	if (strcmp(citanjeFlaga(), "zakljucano") == 0) {
-		printf("Ova opcija je dostupna samo za korisnike sa otkljucanom aplikacijom!\n\n");
-		printf("Izaberite opciju\n1-> Povratak na glavni meni\n2-> Izlazak iz aplikacije\n");
-		opcija = _getch();
-		while (opcija != '1' && opcija != '2') {
-			printf("Pogresan unos!\n");
-			opcija = _getch();
-		}
-
-		if (opcija == '1')
-			glavniMeni();
-		else if (opcija == '2')
-			exit(1);
-	}
-	else {
-		upisInformacija();
-		printf("Izaberite opciju\n1-> Povratak na glavni meni\n2-> Izlazak iz aplikacije\n");
-		opcija = _getch();
-		while (opcija != '1' && opcija != '2') {
-			printf("Pogresan unos!\n");
-			opcija = _getch();
-		}
-
-		if (opcija == '1')
-			glavniMeni();
-		else if (opcija == '2')
-			exit(1);
-	}
+	
 }
 
 void odabirOpcije() {
@@ -177,19 +149,41 @@ void odabirOpcije() {
 			else if (opcija == 'e' || opcija == 'E')
 				exit(1);
 			break;
-		case '4':
+		case '4': {
 			system("cls");
-			meniZaIzmjenuInformacija();
-			opcija = _getch();
-			while (opcija != 'm' && opcija != 'M' && opcija != 'e' && opcija != 'E') {
-				printf("Pogresan unos!\n");
+			meniZaIzmjenuInformacija(); 
+			if (strcmp(citanjeFlaga(), "zakljucano") == 0) {
+				printf("Ova opcija je dostupna samo za placenu aplikaciju!\n\n");
+				footer();
 				opcija = _getch();
-			}
+				while (opcija != 'M' && opcija != 'm' && opcija != 'N' && opcija != 'n') {
+					printf("Pogresan unos!\n");
+					opcija = _getch();
+				}
 
-			if (opcija == 'm' || opcija == 'M')
-				glavniMeni();
-			else if (opcija == 'e' || opcija == 'E')
-				exit(1);
+				if (opcija == 'M' || opcija == 'm') {
+					system("cls");
+					glavniMeni();
+				}
+
+				else if (opcija == 'N' || opcija == 'n')
+					exit(1);
+			}
+			else {
+				upisInformacija();
+				printf("Unesi M za povratak na glavni meni ili E za izlazak iz programa!\n");
+				opcija = _getch();
+				while (opcija != 'M' && opcija != 'm' && opcija != 'N' && opcija != 'n') {
+					printf("Pogresan unos!\n");
+					opcija = _getch();
+				}
+
+				if (opcija == 'M' || opcija == 'm')
+					glavniMeni();
+				else if (opcija == 'N' || opcija == 'n')
+					exit(1);
+			}
+		}
 			break;
 		case '5':
 			system("cls");

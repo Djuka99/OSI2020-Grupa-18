@@ -1,0 +1,9 @@
+﻿  Prijava main.c
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Prijava Aplikacija\Prijava Aplikacija\Prijava funkcije.h(52,7): warning C4101: 'ime': unreferenced local variable
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Prijava Aplikacija\Prijava Aplikacija\Prijava funkcije.h(164,1): warning C4047: 'initializing': 'char' differs in levels of indirection from 'char [11]'
+  Generating code
+  0 of 20 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Prijava Aplikacija.vcxproj -> C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\Release\Prijava Aplikacija.exe
