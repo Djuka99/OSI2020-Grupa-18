@@ -52,7 +52,6 @@ void meniZaDeaktiviranjeHR() {
 	printf("\t\tDEAKTIVIRANJE HR NALOGA\n");
 	printf("----------------------------------------------------------------\n");
 	deaktiviranjeHR();
-	footer();
 }
 
 void meniZaDeaktiviranjeKN() {
@@ -60,7 +59,6 @@ void meniZaDeaktiviranjeKN() {
 	printf("\t\tDEAKTIVIRANJE KORISNICKOG NALOGA\n");
 	printf("----------------------------------------------------------------\n");
 	deaktiviranjeKR();
-	footer();
 }
 
 void meniZaAktivaciju() {
@@ -110,6 +108,7 @@ void odabirOpcije() {
 		case '1':
 			system("cls");
 			meniKreiranjeHR();
+			footer();
 			opcija = _getch();
 			while (opcija != 'm' && opcija != 'M' && opcija != 'e' && opcija != 'E') {
 				printf("Pogresan unos!\n");
@@ -124,6 +123,7 @@ void odabirOpcije() {
 		case '2':
 			system("cls");
 			meniZaDeaktiviranjeHR();
+			footer();
 			opcija = _getch();
 			while (opcija != 'm' && opcija != 'M' && opcija != 'e' && opcija != 'E') {
 				printf("Pogresan unos!\n");
@@ -138,6 +138,7 @@ void odabirOpcije() {
 		case '3':
 			system("cls");
 			meniZaDeaktiviranjeKN();
+			footer();
 			opcija = _getch();
 			while (opcija != 'm' && opcija != 'M' && opcija != 'e' && opcija != 'E') {
 				printf("Pogresan unos!\n");

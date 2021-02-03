@@ -1,4 +1,4 @@
-1 voja voja123 4444 Vojin Djukic RTRK sektor 1 2 2014 1
+1 voja voja123 4444 Vojin Djukic RTRK sektor 1 2 2014 0
 2 loja loja123 5555 Zeljko Lojic Cajevac programer 5 10 2020 1
 3 ogi ogi123 1041 Ognjen Djukic RTRK cuvar 1 2 2020 1
 4 Baks fabregas123 2041 Bojan Petrusic BrijoRudar kopa 9 9 2000 1
