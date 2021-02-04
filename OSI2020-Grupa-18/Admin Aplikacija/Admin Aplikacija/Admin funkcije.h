@@ -150,10 +150,13 @@ int kreiranjeHR() {
 				if (strcmp(hrAccount.userName, temp.userName) != 0) {
 					continue;
 				}
-				else printf("Vec postoji nalog sa tim imenom!\n");
-				break;
+				else {
+					printf("Vec postoji nalog sa tim imenom!\n");
+					fclose(hr);
+					break;
+				}
 			}
-
+		fclose(hr);
 	} while (fscanf(hr, "%d %s %s %d", &temp.id, temp.userName, temp.password, &temp.stanje) != EOF);
 	if ((hr = fopen("../../Datoteke/HR.txt", "a")) != NULL)
 		fprintf(hr, "\n%d %s %s %d", temp.id + 1, hrAccount.userName, hrAccount.password, stanjeRadnika);
@@ -240,7 +243,7 @@ int deaktiviranjeHR() {
 		zamjena("../../Datoteke/HR.txt", brLinija, linija);
 	else
 		printf("Nalog radnika je vec neaktivan!");
-	
+	fclose(hr);
 }
 
 int deaktiviranjeKR() {
