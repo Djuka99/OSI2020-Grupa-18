@@ -188,10 +188,10 @@ void dodavanjeNovog() {
 		strcat(txtSati, krAccount.userName);
 		strcat(txtSati, ".txt");
 		prijaveRadnika = fopen(txtPrijave, "w");
-		fprintf(prijaveRadnika, "%02d.%02d.%d. %-11s %02d:%02dh\n", krAccount.datum.dan, krAccount.datum.mjesec, krAccount.datum.godina, "odjavljen", tempT.sati, tempT.minute);
+		fprintf(prijaveRadnika, "%02d.%02d.%d. %-11s %02d:%02d\n", krAccount.datum.dan, krAccount.datum.mjesec, krAccount.datum.godina, "odjavljen", tempT.sati,tempT.minute);
 		fclose(prijaveRadnika);
 		satiRadnika = fopen(txtSati, "w");
-		fprintf(satiRadnika, "%02d.%02d.%d.     %02d:%02dh", krAccount.datum.dan, krAccount.datum.mjesec, krAccount.datum.godina, tempT.sati, tempT.minute);
+		fprintf(satiRadnika, "%02d.%02d.%d.     %02d:%02dh", krAccount.datum.dan, krAccount.datum.mjesec, krAccount.datum.godina, 0, 0);
 		fclose(satiRadnika);
 	}
 	else

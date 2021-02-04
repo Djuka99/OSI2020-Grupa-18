@@ -150,7 +150,6 @@ int zamjena(char* fname, int brLinije, char* novaLinija)							                 
 		else
 		{
 			fprintf(fptr2, "%s", novaLinija);
-			printf("ISPISO ZAMJENU\n");
 		}
 	}
 	fclose(fptr1);
@@ -172,25 +171,34 @@ void upisPrijave(int pin) {
 	FILE* prijava;
 	FILE* upisPrijave;
 	FILE* upisSata;
-	printf("%d\n", pin);
-	//TRAZIM ZADNJU LINIJU (PRIJAVLJEN ili ODJAVLJEN)
+
+
 	if ((korisnici = fopen("../../Datoteke/Korisnici.txt", "r")) != NULL) {
-		while (fscanf(korisnici, "%d %s %s %d %s %s %s %s %d %d %d %d", &krAccount.id, krAccount.userName, krAccount.password, &krAccount.pin, krAccount.ime, krAccount.prezime, krAccount.radnoMjesto, krAccount.sektor, &krAccount.datum.dan, &krAccount.datum.mjesec, &krAccount.datum.godina, &krAccount.stanje) != EOF)
+		while (fscanf(korisnici, "%d %s %s %d %s %s %s %s %d %d %d %d", &krAccount.id, krAccount.userName, krAccount.password, &krAccount.pin, krAccount.ime, krAccount.prezime, krAccount.radnoMjesto, krAccount.sektor, &krAccount.datum.dan, &krAccount.datum.mjesec, &krAccount.datum.godina, &krAccount.stanje) != EOF) {
 			if (pin == krAccount.pin) {
+				
 				strcat(txtPrijave, krAccount.userName);
 				strcat(txtPrijave, ".txt");
 				strcat(txtSati, krAccount.userName);
 				strcat(txtSati, ".txt");
-				if ((prijava = fopen(txtPrijave, "r")) != NULL)
+
+				//TRAZIM ZADNJU LINIJU (PRIJAVLJEN ili ODJAVLJEN)
+				if ((prijava = fopen(txtPrijave, "r")) != NULL) {
 					while (!feof(prijava))
 					{
 						fscanf(prijava, "%d.%d.%d. %s %d:%d", &vrijeme.dan, &vrijeme.mjesec, &vrijeme.godina, flag, &vrijeme.sati, &vrijeme.minute);
 					}
+				}
+				else
+					printf("Nije moguce otvoriti txtPrijave.txt za pretragu poslednje linije!\n");
+				fclose(prijava);
 			}
+		}
 	}
 	else
 		printf("Nije moguce otvoriti Prijave radnika.txt\n");
 	fclose(korisnici);
+
 
 	//PROVJERAVAM ZADNJU LINIJU
 	if (strcmp(flag, "odjavljen") == 0) {
@@ -251,7 +259,7 @@ void upisPrijave(int pin) {
 			else {
 				//AKO JE DATUM RAZLICIT SAMO DODAJ NOVU LINIJU SA NOVIM SATOM
 				if ((upisSata = fopen(txtSati, "a")) != NULL)
-				fprintf(upisSata, "\n%02d.%02d.%d.     %02d:%02dh", temp.dan, temp.mjesec, temp.godina, tempSati, tempMinute);
+					fprintf(upisSata, "\n%02d.%02d.%d.     %02d:%02dh", temp.dan, temp.mjesec, temp.godina, tempSati, tempMinute);
 			}
 		}
 		else printf("NE OTVARA\n");

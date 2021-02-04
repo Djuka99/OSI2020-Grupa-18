@@ -1,0 +1,7 @@
+﻿  HR main.c
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\HR Aplikacija\HR Aplikacija\HR funkcije.h(52,28): warning C4101: 'test': unreferenced local variable
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\HR Aplikacija\HR Aplikacija\HR funkcije.h(51,53): warning C4101: 'opcija': unreferenced local variable
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\HR Aplikacija\HR Aplikacija\HR funkcije.h(205,7): warning C4101: 'str': unreferenced local variable
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\HR Aplikacija\HR Aplikacija\HR funkcije.h(226,7): warning C4101: 'str': unreferenced local variable
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\HR Aplikacija\HR Aplikacija\HR funkcije.h(248,7): warning C4101: 'str': unreferenced local variable
+  HR Aplikacija.vcxproj -> C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\x64\Debug\HR Aplikacija.exe

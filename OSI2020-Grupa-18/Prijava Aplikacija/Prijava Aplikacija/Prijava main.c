@@ -13,6 +13,6 @@ int main() {
 	GetWindowRect(console, &r);
 	MoveWindow(console, r.left, r.top, 800, 450, TRUE);
 	system("color 0a");
-	while(1)
+	//while(1)
 		glavniMeni();
 }
