@@ -1,0 +1,4 @@
+﻿  Korisnicka main.c
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Korisnicka Aplikacija\Korisnicka Aplikacija\Korisnicka funkcije.h(66,30): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Korisnicka Aplikacija\Korisnicka Aplikacija\Korisnicka funkcije.h(119,7): warning C4101: 'str': unreferenced local variable
+  Korisnicka Aplikacija.vcxproj -> C:\Users\djuki\Desktop\OSI projekat\OSI2020-Grupa-18\Admin Aplikacija\x64\Debug\Korisnicka Aplikacija.exe

@@ -62,9 +62,14 @@ int unosPodataka() {
 		if (temp != 8) {
 			hracc.password[i] = temp;
 			printf("*");
+			i++;
+		}
+		else {
+			hracc.password[i - 1] = "";
+			printf("\b \b");
+			i--;
 		}
 		temp = _getch();
-		i++;
 	}
 	if ((hr = fopen("../../Datoteke/HR.txt", "r")) != NULL) {
 		while (fscanf(hr, "%d %s %s %d\n", &id_temp, username_temp, password_temp, &status_temp) != EOF)
@@ -107,6 +112,63 @@ void logovanje() {
 	}
 }
 
+int prestupna_godina(int godina)
+{
+	if ((godina % 4 == 0 && godina % 100 != 0) || (godina % 4 == 0 && godina % 400 == 0))
+		return 1;
+	else return 0;
+}
+
+int provjera_datuma(KORISNIK kraccount)
+{
+
+	if ((kraccount.datum.mjesec == 1 || kraccount.datum.mjesec == 3 || kraccount.datum.mjesec == 5 || kraccount.datum.mjesec == 7
+		|| kraccount.datum.mjesec == 8 || kraccount.datum.mjesec == 10 || kraccount.datum.mjesec == 12) && (kraccount.datum.dan > 31 || kraccount.datum.dan < 1))
+	{
+		printf("Pogresno ste unijeli datum, pokusajte ponovo!\n");
+		return 0;
+	}
+
+	else if ((kraccount.datum.mjesec == 4 || kraccount.datum.mjesec == 6 || kraccount.datum.mjesec == 9 || kraccount.datum.mjesec == 11) && (kraccount.datum.dan > 30 || kraccount.datum.dan < 1))
+	{
+		printf("\nnPogresno ste unijeli datum, pokusajte ponovo!\n");
+		return 0;
+	}
+	else if ((kraccount.datum.mjesec == 2 && prestupna_godina(kraccount.datum.godina)) && (kraccount.datum.dan > 29 || kraccount.datum.dan < 1))
+	{
+		printf("\nPogresno ste unijeli datum, pokusajte ponovo!\n");
+		return 0;
+	}
+	else if ((kraccount.datum.mjesec == 2 && !prestupna_godina(kraccount.datum.godina)) && (kraccount.datum.dan > 28 || kraccount.datum.dan < 1))
+	{
+		printf("\nPogresno ste unijeli datum, pokusajte ponovo!\n");
+		return 0;
+	}
+	else if (kraccount.datum.mjesec > 12 || kraccount.datum.mjesec < 1)
+	{
+		printf("\nPogresno ste unijeli datum, pokusajte ponovo!\n");
+		return 0;
+	}
+	return 1;
+}
+
+int provjeraPina(int pin) {
+
+	FILE* korisnici;
+	KORISNIK temp;
+
+	if ((korisnici = fopen("../../Datoteke/Korisnici.txt", "r")) != NULL)
+		while (fscanf(korisnici, "%d %s %s %d %s %s %s %s %d %d %d %d", &temp.id, temp.userName, temp.password, &temp.pin, temp.ime, temp.prezime, temp.radnoMjesto, temp.sektor, &temp.datum.dan, &temp.datum.mjesec, &temp.datum.godina, &temp.stanje) != EOF) {
+			if ((pin - temp.pin) == 0) {
+				return 0;
+				break;
+			}
+		}
+	fclose(korisnici);
+	return 1;
+
+}
+
 VRIJEME trenutnoVrijeme() {
 	VRIJEME t;
 	time_t vrijeme;
@@ -139,6 +201,22 @@ int brojacNaloga(char* imeFajla) {																									     // Funkcija koja
 	return brojac;
 }
 
+int provjeraUsernama(char* username) {
+	KORISNIK temp;
+	FILE* korisnici;
+	if ((korisnici = fopen("../../Datoteke/Korisnici.txt", "r")) != NULL)
+		while (fscanf(korisnici, "%d %s %s %d %s %s %s %s %d %d %d %d", &temp.id, temp.userName, temp.password, &temp.pin, temp.ime, temp.prezime, temp.radnoMjesto, temp.sektor, &temp.datum.dan, &temp.datum.mjesec, &temp.datum.godina, &temp.stanje) != EOF) {
+			if (strcmp(username, temp.userName) == 0) {
+
+				printf("Vec postoji nalog sa tim imenom!\n");
+				return 0;
+				break;
+			}
+		}
+	fclose(korisnici);
+	return 1;
+}
+
 void dodavanjeNovog() {
 	FILE* korisnici, * prijaveRadnika, * satiRadnika;
 	KORISNIK krAccount, temp;
@@ -147,48 +225,56 @@ void dodavanjeNovog() {
 	char txtSati[MAXF] = "../../Datoteke/Baza radnika/Sati radnika/";
 	int b = brojacNaloga("../../Datoteke/Korisnici.txt"), stanjeRadnika = 1;													// Promjenljiva koja reprezentuje stanje radnika:
 																																// 1 za aktivan nalog i 0 za neaktivan
-	for (int i = 0; i < MAX; i++)
-		krAccount.password[i] = 0;
 
+	printf("Unesi ime novog korisnika: "); scanf("%s", krAccount.ime);
+	printf("Unesi prezime novog korisnika: "); scanf("%s", krAccount.prezime);
+
+	//Provjera usernama
 	do {
 
-		printf("Unesi ime novog korisnika: "); scanf("%s", krAccount.ime);
-		printf("Unesi prezime novog korisnika: "); scanf("%s", krAccount.prezime);
 		printf("Unesi username novog korisnika: "); scanf("%s", krAccount.userName);
-		printf("Unesi sifru novog korisnika: "); scanf("%s", krAccount.password);
-		printf("Unesi radno mjesto novog korisnika: "); scanf("%s", krAccount.radnoMjesto);
-		printf("Unesi sektor novog korisnika: "); scanf("%s", krAccount.sektor);
-		printf("Unesi datum zaposlenja novog korisnika (dan mjesec godina): "); scanf("%d %d %d", &krAccount.datum.dan, &krAccount.datum.mjesec, &krAccount.datum.godina);
-		krAccount.pin = rand() % 9000 + 1000;
-		if ((korisnici = fopen("../../Datoteke/Korisnici.txt", "r")) != NULL)
-			while (fscanf(korisnici, "%d %s %s %d %s %s %s %s %d %d %d %d", &temp.id, temp.userName, temp.password, &temp.pin, temp.ime, temp.prezime, temp.radnoMjesto, temp.sektor, &temp.datum.dan, &temp.datum.mjesec, &temp.datum.godina, &temp.stanje) != EOF) {
-				if ((strcmp(krAccount.userName, temp.userName) == 0)) {
-					printf("Vec postoji nalog sa tim imenom!\n");
-					break;
-				}
-			}
-	} while (fscanf(korisnici, "%d %s %s %d %s %s %s %s %d %d %d %d", &temp.id, temp.userName, temp.password, &temp.pin, temp.ime, temp.prezime, temp.radnoMjesto, temp.sektor, &temp.datum.dan, &temp.datum.mjesec, &temp.datum.godina, &temp.stanje) != EOF);
-	fclose(korisnici);
+
+	} while (!provjeraUsernama(krAccount.userName));
+
+	//Provjera duzine sifre
 	do {
-		if ((korisnici = fopen("../../Datoteke/Korisnici.txt", "r")) != NULL)
-			while (fscanf(korisnici, "%d %s %s %d %s %s %s %s %d %d %d %d", &temp.id, temp.userName, temp.password, &temp.pin, temp.ime, temp.prezime, temp.radnoMjesto, temp.sektor, &temp.datum.dan, &temp.datum.mjesec, &temp.datum.godina, &temp.stanje) != EOF) {
-				if ((krAccount.pin - temp.pin) == 0) {
-					krAccount.pin = rand() % 9000 + 1000;
-					break;
-				}
-			}
-	} while (fscanf(korisnici, "%d %s %s %d %s %s %s %s %d %d %d %d", &temp.id, temp.userName, temp.password, &temp.pin, temp.ime, temp.prezime, temp.radnoMjesto, temp.sektor, &temp.datum.dan, &temp.datum.mjesec, &temp.datum.godina, &temp.stanje) != EOF);
-	fclose(korisnici);
+
+		printf("Unesi sifru novog korisnika (mora biti veca od 5 i manja od 15): "); scanf("%s", krAccount.password);
+
+		if (strlen(krAccount.password) < 5 && strlen(krAccount.password) > 15)
+			printf("Sifra mora da sadrzi vise od 5 karaktera!\n");
+
+	} while (strlen(krAccount.password) < 5 && strlen(krAccount.password) > 15);
+
+	printf("Unesi radno mjesto novog korisnika: "); scanf("%s", krAccount.radnoMjesto);
+	printf("Unesi sektor novog korisnika: "); scanf("%s", krAccount.sektor);
+
+	//Provjera datuma
+	do {
+
+		printf("Unesi datum zaposlenja novog korisnika (dan mjesec godina): ");
+		scanf("%d %d %d", &krAccount.datum.dan, &krAccount.datum.mjesec, &krAccount.datum.godina);
+
+	} while (!provjera_datuma(krAccount));
+
+	//Provjera pina
+	do {
+
+		krAccount.pin = rand() % 9000 + 1000;
+	} while (!provjeraPina(krAccount.pin));
+
 	if ((korisnici = fopen("../../Datoteke/Korisnici.txt", "a")) != NULL) {
 		fprintf(korisnici, "%d %s %s %d %s %s %s %s %d %d %d %d\n", b, krAccount.userName, krAccount.password, krAccount.pin, krAccount.ime, krAccount.prezime, krAccount.radnoMjesto, krAccount.sektor, krAccount.datum.dan, krAccount.datum.mjesec, krAccount.datum.godina, stanjeRadnika);
 
-		//KREIRAM .txt FAJLOVE U BAZI I SETUJEM POCETNI DATUM
+		//KREIRAM .txt FAJLOVE U BAZI
 		strcat(txtPrijave, krAccount.userName);
 		strcat(txtPrijave, ".txt");
 		strcat(txtSati, krAccount.userName);
 		strcat(txtSati, ".txt");
 		prijaveRadnika = fopen(txtPrijave, "w");
-		fprintf(prijaveRadnika, "%02d.%02d.%d. %-11s %02d:%02d\n", krAccount.datum.dan, krAccount.datum.mjesec, krAccount.datum.godina, "odjavljen", tempT.sati,tempT.minute);
+
+		//Setujem pocetne prijave
+		fprintf(prijaveRadnika, "%02d.%02d.%d. %-11s %02d:%02d\n", krAccount.datum.dan, krAccount.datum.mjesec, krAccount.datum.godina, "odjavljen", tempT.sati, tempT.minute);
 		fclose(prijaveRadnika);
 		satiRadnika = fopen(txtSati, "w");
 		fprintf(satiRadnika, "%02d.%02d.%d.     %02d:%02dh", krAccount.datum.dan, krAccount.datum.mjesec, krAccount.datum.godina, 0, 0);

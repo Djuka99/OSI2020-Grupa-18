@@ -28,6 +28,8 @@ typedef struct vrijeme {
 
 char userName[MAX] = "", password[MAX] = "";
 
+
+
 void citanjeInformacije() {
 	FILE* informacije;
 	INFO info;
@@ -58,10 +60,16 @@ int unosPodataka() {
 		if (tmp != 8) {
 			kracc.password[i] = tmp;
 			printf("*");
+			i++;
+		}
+		else {
+			kracc.password[i - 1] = "";
+			printf("\b \b");
+			i--;
 		}
 		tmp = _getch();
-		i++;
 	}
+
 	strcpy(password, "");
 	strcat(password, kracc.password);
 	if ((korisnici = fopen("../../Datoteke/Korisnici.txt", "r")) != NULL) {
