@@ -43,7 +43,7 @@ void meniKreiranjeHR() {
 	printf("\t\tKREIRANJE HR NALOGA\n");
 	printf("----------------------------------------------------------------\n");
 	kreiranjeHR();
-	footer();
+	
 
 }
 
