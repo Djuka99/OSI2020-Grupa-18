@@ -8,5 +8,5 @@
 8 krusko krusko 1
 9 slavko slavko 1
 10 mitar mitar 0
-
-11 xxx xxx 1
+11 xxx xxx 0
+12 ddd ddd 1
