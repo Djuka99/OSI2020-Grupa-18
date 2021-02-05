@@ -64,7 +64,7 @@ int unosPodataka() {
 			printf("*");
 			i++;
 		}
-		else {
+		else if (temp == 8 && i > 0) {
 			hracc.password[i - 1] = "";
 			printf("\b \b");
 			i--;
@@ -217,6 +217,14 @@ int provjeraUsernama(char* username) {
 	return 1;
 }
 
+int provjeraPassworda(char* password) {
+	if (strlen(password) < 5 || strlen(password) > 15) {
+		printf("Sifra mora da sadrzi 5-15 karaktera!\n");
+		return 0;
+	}
+	return 1;
+}
+
 void dodavanjeNovog() {
 	FILE* korisnici, * prijaveRadnika, * satiRadnika;
 	KORISNIK krAccount, temp;
@@ -239,12 +247,10 @@ void dodavanjeNovog() {
 	//Provjera duzine sifre
 	do {
 
-		printf("Unesi sifru novog korisnika (mora biti veca od 5 i manja od 15): "); scanf("%s", krAccount.password);
+		printf("Unesi sifru novog korisnika: "); scanf("%s", krAccount.password);
+		
 
-		if (strlen(krAccount.password) < 5 && strlen(krAccount.password) > 15)
-			printf("Sifra mora da sadrzi vise od 5 karaktera!\n");
-
-	} while (strlen(krAccount.password) < 5 && strlen(krAccount.password) > 15);
+	} while (!provjeraPassworda(krAccount.password));
 
 	printf("Unesi radno mjesto novog korisnika: "); scanf("%s", krAccount.radnoMjesto);
 	printf("Unesi sektor novog korisnika: "); scanf("%s", krAccount.sektor);

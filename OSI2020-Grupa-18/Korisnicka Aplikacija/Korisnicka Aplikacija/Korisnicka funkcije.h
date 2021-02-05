@@ -62,7 +62,7 @@ int unosPodataka() {
 			printf("*");
 			i++;
 		}
-		else {
+		else if (tmp == 8 && i > 0) {
 			kracc.password[i - 1] = "";
 			printf("\b \b");
 			i--;
