@@ -41,7 +41,10 @@ void dodavanjeNovogZaposlenog() {
 	zaglavlje();
 	printf("\t\t\tDODAVANJE NOVOG ZAPOSLENOG\n");
 	printf("----------------------------------------------------------------\n\n");
-	dodavanjeNovog();
+	if (!provjeraInformacije() && brojacNaloga("../../Datoteke/Korisnici.txt") >= 5)
+		printf("Iskoristili ste limit od 5 korisnickih naloga!\nZa unos dodatnih naloga kupite aplikaciju!\n");
+	else
+		dodavanjeNovog();
 	footer();
 }
 

@@ -123,7 +123,7 @@ int logovanje() {
 
 int brojacNaloga(char* imeFajla) {																					         // Funkcija koja broji naloge                                                                                             
 	FILE* datoteka;
-	int brojac = 1;
+	int brojac = 0;
 	char c;
 	if ((datoteka = fopen(imeFajla, "r")) != NULL) {
 		for (c = getc(datoteka); c != EOF; c = getc(datoteka))
@@ -163,7 +163,7 @@ int provjeraPassworda(char* password) {
 int kreiranjeHR() {
 	FILE* hr;
 	HR hrAccount, temp;
-	int b = brojacNaloga("../../Datoteke/HR.txt")-1;
+	int b = brojacNaloga("../../Datoteke/HR.txt");
 
 	//Stanje radnika je aktivno po kreiranju HR naloga
 	int stanjeRadnika = 1;
@@ -439,6 +439,21 @@ int kreiranjeHR() {
 		else
 			printf("Nije moguce otvoriti Informacije.txt za upis!\n");
 		fclose(informacije);
+	}
+
+	int provjeraInformacije() {
+		FILE* validnostKljuca;
+		char c[MAX] = "";
+		if (validnostKljuca = fopen("../../Datoteke/Validnost kljuca.txt", "r"))
+			while (fscanf(validnostKljuca, "%s", c) != EOF);
+				
+		else
+			printf("Nije moguce otvoriti Validnost kljuca.txt za provjeru informacije!\n");
+		
+		if (strcmp(c, "zakljucano") == 0)
+			return 0;
+		else
+			return 1;
 	}
 
 

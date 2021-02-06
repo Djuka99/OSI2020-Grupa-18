@@ -42,9 +42,10 @@ void meniKreiranjeHR() {
 	zaglavlje();
 	printf("\t\tKREIRANJE HR NALOGA\n");
 	printf("----------------------------------------------------------------\n");
-	kreiranjeHR();
-	
-
+	if (!provjeraInformacije() && brojacNaloga("../../Datoteke/HR.txt") >= 3)
+		printf("Iskoristili ste limit od 3 HR naloga!\nZa unos dodatnih HR naloga kupite aplikaciju!\n");
+	else
+		kreiranjeHR();
 }
 
 void meniZaDeaktiviranjeHR() {

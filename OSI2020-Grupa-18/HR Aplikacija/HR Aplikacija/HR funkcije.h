@@ -188,7 +188,7 @@ VRIJEME trenutnoVrijeme() {
 
 int brojacNaloga(char* imeFajla) {																									     // Funkcija koja broji naloge                                                                                             
 	FILE* datoteka;
-	int brojac = 1;
+	int brojac = 0;
 	char c;
 	if ((datoteka = fopen(imeFajla, "r")) != NULL) {
 		for (c = getc(datoteka); c != EOF; c = getc(datoteka))
@@ -458,4 +458,19 @@ void pretragaSati() {
 	else printf("Nije moguce otvoriti datoteku korisnici u funkciji za pretragu prijava!\n");
 	if (brojac == 0)
 		printf("Ne postoji korisnik u bazi!\n");
+}
+
+int provjeraInformacije() {
+	FILE* validnostKljuca;
+	char c[MAX] = "";
+	if (validnostKljuca = fopen("../../Datoteke/Validnost kljuca.txt", "r"))
+		while (fscanf(validnostKljuca, "%s", c) != EOF);
+
+	else
+		printf("Nije moguce otvoriti Validnost kljuca.txt za provjeru informacije!\n");
+
+	if (strcmp(c, "zakljucano") == 0)
+		return 0;
+	else
+		return 1;
 }
