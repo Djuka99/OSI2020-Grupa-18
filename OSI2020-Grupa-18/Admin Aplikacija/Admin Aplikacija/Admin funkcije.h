@@ -163,7 +163,7 @@ int provjeraPassworda(char* password) {
 int kreiranjeHR() {
 	FILE* hr;
 	HR hrAccount, temp;
-	int b = brojacNaloga("../../Datoteke/HR.txt");
+	int b = brojacNaloga("../../Datoteke/HR.txt")-1;
 
 	//Stanje radnika je aktivno po kreiranju HR naloga
 	int stanjeRadnika = 1;
@@ -182,7 +182,7 @@ int kreiranjeHR() {
 		
 
 		if ((hr = fopen("../../Datoteke/HR.txt", "a")) != NULL)
-			fprintf(hr, "\n%d %s %s %d", b + 1, hrAccount.userName, hrAccount.password, stanjeRadnika);
+			fprintf(hr, "%d %s %s %d\n", b + 1, hrAccount.userName, hrAccount.password, stanjeRadnika);
 		else
 			printf("Nije moguce otvoriti HR datoteku!\n");
 		fclose(hr);
@@ -259,6 +259,7 @@ int kreiranjeHR() {
 						strcat(linija, hrAccount.password);
 						strcat(linija, " ");
 						strcat(linija, stanjeChar);
+						strcat(linija, "\n");
 						fclose(hr);
 						zamjena("../../Datoteke/HR.txt", brLinija, linija);
 						break;
